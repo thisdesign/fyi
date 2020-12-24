@@ -1,6 +1,12 @@
+import React from "react";
+import Emoji from "a11y-react-emoji";
+
+const Icon = () => <Emoji style={{ fontSize: "2rem" }} symbol="💡" />;
+
 export default {
   type: "document",
   name: "inspiration",
+  icon: Icon,
   fields: [
     {
       name: "title",
