@@ -18,17 +18,23 @@ export default {
     },
 
     {
-      name: "href",
-      description: "Link to external website",
-      type: "url",
-      title: "External Link",
-    },
-
-    {
       name: "category",
       description: "Link this page to an existing Inspiration Category",
       type: "reference",
       to: [{ type: "inspirationCategory" }],
+    },
+
+    {
+      name: "vimeoUrl",
+      description: "Link to Vimeo video",
+      type: "url",
+    },
+
+    {
+      name: "href",
+      description: "Link to external website",
+      type: "url",
+      title: "External Link",
     },
 
     {
