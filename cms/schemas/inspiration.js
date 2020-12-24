@@ -26,7 +26,7 @@ export default {
 
     {
       name: "category",
-      description: "Link this page to an existing ",
+      description: "Link this page to an existing Inspiration Category",
       type: "reference",
       to: [{ type: "inspirationCategory" }],
     },
