@@ -37,6 +37,15 @@ export default {
     },
 
     {
+      name: "image",
+      description: "Video Placeholder",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+
+    {
       name: "href",
       description: "Link to external website",
       type: "url",
