@@ -21,7 +21,7 @@
 
   .paragraph {
     column-count: 2;
-    max-width: 5f0em;
+    max-width: 50em;
   }
 </style>
 
