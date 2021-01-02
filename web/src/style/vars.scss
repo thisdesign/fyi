@@ -1,0 +1,33 @@
+@import 'modularscale/modularscale';
+
+$modularscale: (
+  base: 1em,
+  ratio: 1.2,
+);
+
+$size-gutter: ms(1);
+$size-medium: ms(6);
+$size-large: ms(10);
+$size-x-large: ms(14);
+
+/**
+ * Typography
+ */
+
+$font-mono: Theinhardt Mono, monospace;
+$font-grotesk: 'Theinhardt', Helvetica, Arial, sans-serif;
+$font-mono: Theinhardt Mono, monospace;
+
+$line-height-std: 1.2;
+
+/**
+* Opacity
+*/
+
+$opacity-standard: 0.25;
+
+/**
+* ease
+*/
+
+$ease-in-out: cubic-bezier(0.66, 0.01, 0.23, 0.99);
