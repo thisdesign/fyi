@@ -1,9 +1,30 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
+
   import Logo from './Logo.svelte'
   import Type from './Type.svelte'
+  import gsap from 'gsap'
 
   export let heading: string | null
   export let body: string | null
+  let node: HTMLElement
+
+  onMount(() => {
+    disableBodyScroll(node)
+  })
+
+  function clearIntro() {
+    gsap
+      .to(node, {
+        duration: 0.8,
+        ease: 'Power3.easeIn',
+        y: '-100%',
+      })
+      .then(() => {
+        clearAllBodyScrollLocks()
+      })
+  }
 </script>
 
 <style type="text/scss">
@@ -19,6 +40,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    position: fixed;
+    top: 0;
   }
 
   h2 {
@@ -26,7 +50,7 @@
   }
 </style>
 
-<div class="preload">
+<div class="preload" bind:this={node} on:click={clearIntro}>
   <h2 class="h1">
     <Type text={heading || ''} />
   </h2>
