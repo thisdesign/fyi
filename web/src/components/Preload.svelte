@@ -4,7 +4,10 @@
 
   import Logo from './Logo.svelte'
   import Type from './Type.svelte'
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
   import gsap from 'gsap'
+
+  gsap.registerPlugin(ScrollToPlugin)
 
   export let heading: string | null
   export let body: string | null
@@ -15,15 +18,17 @@
   })
 
   function clearIntro() {
-    gsap
-      .to(node, {
-        duration: 0.8,
-        ease: 'Power3.easeIn',
-        y: '-100%',
-      })
-      .then(() => {
-        clearAllBodyScrollLocks()
-      })
+    const tl = gsap.timeline()
+
+    tl.to(node, {
+      duration: 0.8,
+      ease: 'Power3.easeIn',
+      y: '-100%',
+    })
+
+    tl.to(window, { duration: 0.5, scrollTo: 170, delay: 0.4 }).then(() => {
+      clearAllBodyScrollLocks()
+    })
   }
 </script>
 

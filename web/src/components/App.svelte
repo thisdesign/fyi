@@ -38,17 +38,12 @@
     position: relative;
     z-index: 10;
   }
-
-  .space {
-    height: 100vh;
-  }
 </style>
 
 <div class="foreground">
   <Seo pageTitle={null} {baseTitle} />
   <Nav>{lat}°N, {lng}°W</Nav>
   <Preload {heading} {body} />
-  <div class="space" />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
 </div>
 <video src={videoSrc} autoplay loop muted />

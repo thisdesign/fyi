@@ -52,8 +52,12 @@
     width: 100%;
     border-radius: $size-corner-radius;
   }
+  .space {
+    height: 100vh;
+  }
 </style>
 
+<div class="space" />
 <div class="home-outer">
   <div class="home">
     <h2 class="h1">
