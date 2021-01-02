@@ -13,6 +13,9 @@
   .home {
     background: white;
     padding: $size-margin;
+    transform: scale(0.9);
+    transform-origin: bottom;
+    border-radius: $size-corner-radius $size-corner-radius 0 0;
   }
 
   .h1 {
