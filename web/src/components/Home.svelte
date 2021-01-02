@@ -4,6 +4,7 @@
 
   export let intro: SanityBlockContent | null
   export let body: SanityBlockContent | null
+  export let videoUrl: string | null
 </script>
 
 <style type="text/scss">
@@ -12,7 +13,7 @@
 
   .home {
     background: white;
-    padding: $size-margin;
+    padding: $size-margin-lg $size-margin;
     transform: scale(0.9);
     transform-origin: bottom;
     border-radius: $size-corner-radius $size-corner-radius 0 0;
@@ -25,6 +26,12 @@
   .paragraph {
     column-count: 2;
     max-width: 50em;
+    margin-bottom: $size-margin;
+  }
+
+  video {
+    width: 100%;
+    border-radius: $size-corner-radius;
   }
 </style>
 
@@ -35,4 +42,5 @@
   <div class="paragraph">
     <BlockContent blocks={body} />
   </div>
+  {#if videoUrl}<video src={videoUrl} muted controls />{/if}
 </div>

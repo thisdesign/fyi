@@ -10,7 +10,7 @@ export type Site = SanityDocument & {
   home?: {
     intro?: SanityBlockContent
     paragraph?: SanityBlockContent
-    video?: unknown
+    video?: string
   }
   inspiration?: {
     documents?: unknown[]

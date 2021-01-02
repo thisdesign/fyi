@@ -10,6 +10,10 @@
       "general":{
         ...general,
         "backgroundVideo": general.backgroundVideo.asset->url
+      },
+      "home":{
+        ...home,
+        "video": general.backgroundVideo.asset->url
       }
     }
   `

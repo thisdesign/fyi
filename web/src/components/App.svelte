@@ -16,9 +16,9 @@
 
   $: videoSrc = data.general?.backgroundVideo
 
-  $: homeIntro = data.home?.intro
-  $: homeBody = data.home?.paragraph
-  console.log()
+  $: homeIntro = data.home?.intro || null
+  $: homeBody = data.home?.paragraph || null
+  $: homeVideoUrl = data.home?.video || null
 </script>
 
 <style type="text/scss">
@@ -49,6 +49,6 @@
   <Nav>{lat}°N, {lng}°W</Nav>
   <Preload {heading} {body} />
   <div class="space" />
-  <Home intro={homeIntro || null} body={homeBody || null} />
+  <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
 </div>
 <video src={videoSrc} autoplay loop muted />
