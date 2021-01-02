@@ -4,7 +4,7 @@ import type { SanityImage } from '../types'
 
 export const clientOptions = {
   dataset: 'production',
-  projectId: 'cnqlqmfn',
+  projectId: 'fwv218fy',
   useCdn: process.env.NODE_ENV === 'production',
 }
 
