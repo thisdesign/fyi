@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Site } from '../types'
+  import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
 
   export let data: Site
@@ -15,4 +16,5 @@
   // @import '../style/breakpoints.scss';
 </style>
 
-<Preload cords={[lat, lng]} {heading} {body} />
+<Nav>{lat}°N, {lng}°W</Nav>
+<Preload {heading} {body} />
