@@ -5,17 +5,23 @@ $modularscale: (
   ratio: 1.2,
 );
 
-$spacer-1: 8px * 1;
-$spacer-2: 8px * 2;
-$spacer-3: 8px * 3;
-$spacer-4: 8px * 4;
-$spacer-5: 8px * 5;
-$spacer-6: 8px * 6;
-$spacer-7: 8px * 7;
-$spacer-8: 8px * 8;
-$spacer-9: 8px * 9;
-$spacer-10: 8px * 10;
+$unit-1: 8px * 1;
+$unit-2: 8px * 2;
+$unit-3: 8px * 3;
+$unit-4: 8px * 4;
+$unit-5: 8px * 5;
+$unit-6: 8px * 6;
+$unit-7: 8px * 7;
+$unit-8: 8px * 8;
+$unit-9: 8px * 9;
+$unit-10: 8px * 10;
 
-$size-margin: $spacer-5;
-$size-nav: $spacer-10;
-$size-corner-radius: $spacer-6;
+$spacer-1: 8px;
+$spacer-2: 16px;
+$spacer-3: 32px;
+$spacer-4: 64px;
+$spacer-5: 128px;
+
+$size-margin: $spacer-4;
+$size-nav: $unit-10;
+$size-corner-radius: $unit-6;

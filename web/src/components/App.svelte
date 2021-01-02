@@ -15,6 +15,10 @@
   $: baseTitle = data.seo?.title || 'FYi Design'
 
   $: videoSrc = data.general?.backgroundVideo
+
+  $: homeIntro = data.home?.intro
+  $: homeBody = data.home?.paragraph
+  console.log()
 </script>
 
 <style type="text/scss">
@@ -44,7 +48,7 @@
   <Seo pageTitle={null} {baseTitle} />
   <Nav>{lat}°N, {lng}°W</Nav>
   <Preload {heading} {body} />
-  <Home />
+  <div class="space" />
+  <Home intro={homeIntro || null} body={homeBody || null} />
 </div>
-<div class="space" />
 <video src={videoSrc} autoplay loop muted />
