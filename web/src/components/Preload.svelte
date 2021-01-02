@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Type from './Type.svelte'
+
   export let heading: string | null
   export let body: string | null
   export let cords: [number, number]
@@ -24,6 +26,10 @@
 </nav>
 
 <div class="main">
-  <div class="h1">{heading}</div>
-  <p class="p">{body}</p>
+  <div class="h1">
+    <Type text={heading || ''} />
+  </div>
+  <p class="p">
+    <Type text={body || ''} />
+  </p>
 </div>
