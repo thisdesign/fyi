@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Site } from '../types'
+  import Home from './Home.svelte'
   import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
@@ -12,13 +13,38 @@
   $: body = data.preload?.preloadBody || null
 
   $: baseTitle = data.seo?.title || 'FYi Design'
+
+  $: videoSrc = data.general?.backgroundVideo
 </script>
 
 <style type="text/scss">
   // @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
+
+  video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .foreground {
+    position: relative;
+    z-index: 10;
+  }
+
+  .space {
+    height: 100vh;
+  }
 </style>
 
-<Seo pageTitle={null} {baseTitle} />
-<Nav>{lat}°N, {lng}°W</Nav>
-<Preload {heading} {body} />
+<div class="foreground">
+  <Seo pageTitle={null} {baseTitle} />
+  <Nav>{lat}°N, {lng}°W</Nav>
+  <Preload {heading} {body} />
+  <Home />
+</div>
+<div class="space" />
+<video src={videoSrc} autoplay loop muted />

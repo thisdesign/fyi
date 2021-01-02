@@ -10,8 +10,15 @@
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
 
-  .main {
+  .preload {
     padding: $size-margin;
+    padding-top: $size-nav;
+    background: white;
+    // border-radius: 0 0 $size-corner-radius $size-corner-radius;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   h2 {
@@ -19,7 +26,7 @@
   }
 </style>
 
-<div class="main">
+<div class="preload">
   <h2 class="h1">
     <Type text={heading || ''} />
   </h2>

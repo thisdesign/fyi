@@ -4,7 +4,7 @@ import type { SanityBlockContent, SanityImage } from '../sanity'
 export type Site = SanityDocument & {
   _type: 'site'
   general?: {
-    backgroundVideo?: unknown
+    backgroundVideo?: string
     contactEmail?: string
   }
   home?: {

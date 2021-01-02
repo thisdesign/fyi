@@ -10,7 +10,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: $size-margin;
+    height: $size-nav;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 </style>
 

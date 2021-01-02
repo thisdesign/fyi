@@ -4,7 +4,15 @@
   import { client } from '../lib/sanity'
   import type { Site } from '../types'
 
-  const siteQuery = `*[_type == 'site'][0]`
+  const siteQuery = `
+    *[_type == 'site' && _id == "site"][0]{
+      ...,
+      "general":{
+        ...general,
+        "backgroundVideo": general.backgroundVideo.asset->url
+      }
+    }
+  `
 
   const site: Promise<Site> = client.fetch(siteQuery)
 </script>
