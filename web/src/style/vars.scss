@@ -5,13 +5,15 @@ $modularscale: (
   ratio: 1.2,
 );
 
-$size-1: 8px * 1;
-$size-2: 8px * 2;
-$size-3: 8px * 3;
-$size-4: 8px * 4;
-$size-5: 8px * 5;
-$size-6: 8px * 6;
-$size-7: 8px * 7;
-$size-8: 8px * 8;
-$size-9: 8px * 9;
-$size-10: 8px * 10;
+$spacer-1: 8px * 1;
+$spacer-2: 8px * 2;
+$spacer-3: 8px * 3;
+$spacer-4: 8px * 4;
+$spacer-5: 8px * 5;
+$spacer-6: 8px * 6;
+$spacer-7: 8px * 7;
+$spacer-8: 8px * 8;
+$spacer-9: 8px * 9;
+$spacer-10: 8px * 10;
+
+$size-margin: $spacer-5;

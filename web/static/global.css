@@ -97,3 +97,10 @@ button {
   border: none;
   outline: none;
   cursor: pointer; }
+
+.h1 {
+  font-size: 70px;
+  line-height: 1; }
+
+.p {
+  max-width: 30em; }

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import App from '../components/App.svelte'
+
   import { client } from '../lib/sanity'
   import type { Site } from '../types'
 
@@ -12,4 +14,10 @@
   // @import '../style/breakpoints.scss';
 </style>
 
-<div>asfd</div>
+<div>
+  {#await site}
+    loading...
+  {:then site}
+    <App data={site} />
+  {/await}
+</div>
