@@ -18,6 +18,10 @@
   .main {
     padding: $size-margin;
   }
+
+  h2 {
+    margin-bottom: $size-margin;
+  }
 </style>
 
 <nav>
@@ -26,9 +30,9 @@
 </nav>
 
 <div class="main">
-  <div class="h1">
+  <h2 class="h1">
     <Type text={heading || ''} />
-  </div>
+  </h2>
   <p class="p">
     <Type text={body || ''} />
   </p>
