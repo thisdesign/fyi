@@ -10,7 +10,6 @@
   // @import '../style/breakpoints.scss';
 
   div {
-    padding: $size-gutter;
     display: flex;
     justify-content: center;
     align-items: center;

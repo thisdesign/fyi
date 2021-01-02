@@ -6,4 +6,4 @@
   // @import '../style/breakpoints.scss';
 </style>
 
-<div />
+<div>asfd</div>
