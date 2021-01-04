@@ -26,7 +26,12 @@
       y: '-100%',
     })
 
-    tl.to(window, { duration: 0.5, scrollTo: 170, delay: 0.4 }).then(() => {
+    tl.to(window, {
+      duration: 0.7,
+      scrollTo: 170,
+      ease: 'Power3.easeInOut',
+      delay: 0.4,
+    }).then(() => {
       clearAllBodyScrollLocks()
     })
   }
