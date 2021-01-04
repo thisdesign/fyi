@@ -84,6 +84,10 @@ em {
   font-style: italic;
   text-decoration: underline; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 button {
   font-family: inherit;
   font-weight: inherit;

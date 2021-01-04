@@ -3,8 +3,9 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
   import type { SanityBlockContent } from '../types'
-  import BlockContent from '@movingbrands/svelte-portable-text'
+
   import { onMount } from 'svelte'
+  import BlockContent from './BlockContent.svelte'
 
   gsap.registerPlugin(ScrollTrigger)
 

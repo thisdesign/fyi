@@ -12,9 +12,7 @@ export type Site = SanityDocument & {
     paragraph?: SanityBlockContent
     video?: string
   }
-  inspiration?: {
-    documents?: unknown[]
-  }
+  inspiration?: InspirationSchema[]
   preload?: {
     lat?: number
     lng?: number
@@ -27,4 +25,13 @@ export type Site = SanityDocument & {
     title?: string
   }
   title?: string
+}
+
+export type InspirationSchema = {
+  category?: string
+  image?: SanityImage
+  text?: SanityBlockContent
+  title?: string
+  vimeoUrl?: string
+  href?: string
 }
