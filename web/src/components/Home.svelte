@@ -60,12 +60,14 @@
 <div class="space" />
 <div class="home-outer">
   <div class="home">
-    <h2 class="h1">
-      <BlockContent blocks={intro} />
-    </h2>
-    <div class="paragraph">
-      <BlockContent blocks={body} />
+    <div class="container">
+      <h2 class="h1">
+        <BlockContent blocks={intro} />
+      </h2>
+      <div class="paragraph">
+        <BlockContent blocks={body} />
+      </div>
+      {#if videoUrl}<video src={videoUrl} muted controls />{/if}
     </div>
-    {#if videoUrl}<video src={videoUrl} muted controls />{/if}
   </div>
 </div>

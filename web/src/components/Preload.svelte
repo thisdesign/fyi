@@ -47,6 +47,7 @@
     background: white;
     // border-radius: 0 0 $size-corner-radius $size-corner-radius;
     height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,10 +62,12 @@
 </style>
 
 <div class="preload" bind:this={node} on:click={clearIntro}>
-  <h2 class="h1">
-    <Type text={heading || ''} />
-  </h2>
-  <p class="p">
-    <Type text={body || ''} />
-  </p>
+  <div class="container">
+    <h2 class="h1">
+      <Type text={heading || ''} />
+    </h2>
+    <p class="p">
+      <Type text={body || ''} />
+    </p>
+  </div>
 </div>
