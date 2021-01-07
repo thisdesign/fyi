@@ -4,7 +4,7 @@
   import BlockContent from './BlockContent.svelte'
 
   export let data: InspirationSchema
-  let { image, title, href, text } = data
+  let { image, title, href, text, category } = data
 </script>
 
 <style type="text/scss">
@@ -20,6 +20,10 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: $spacer-1;
+
+      span {
+        opacity: 0.5;
+      }
     }
 
     img {
@@ -38,8 +42,8 @@
       {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
       alt={title} />
     <div class="titleArea">
-      <h3>{title}</h3>
-      <!-- <h4>{category}</h4> -->
+      <h3>{title}<span>: {category}</span></h3>
+
       {#if href}
         <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
       {/if}
