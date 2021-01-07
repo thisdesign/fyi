@@ -59,13 +59,16 @@ table {
   background: rgba(0, 0, 0, 0.1); }
 
 :root {
-  --size-margin: 16px; }
+  --size-margin: 16px;
+  --size-margin-lg: 32px; }
   @media (min-width: 768px) {
     :root {
-      --size-margin: 32px; } }
+      --size-margin: 32px;
+      --size-margin-lg: 64px; } }
   @media (min-width: 1024px) {
     :root {
-      --size-margin: 64px; } }
+      --size-margin: 64px;
+      --size-margin-lg: 128px; } }
 
 html,
 body {

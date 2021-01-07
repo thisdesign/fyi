@@ -14,12 +14,15 @@
 
 :root {
   --size-margin: #{$spacer-2};
+  --size-margin-lg: #{$spacer-3};
 
   @include media('>=sm') {
     --size-margin: #{$spacer-3};
+    --size-margin-lg: #{$spacer-4};
   }
   @include media('>=md') {
     --size-margin: #{$spacer-4};
+    --size-margin-lg: #{$spacer-5};
   }
 }
 

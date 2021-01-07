@@ -23,6 +23,6 @@ $spacer-4: 64px;
 $spacer-5: 128px;
 
 $size-margin: var(--size-margin);
-$size-margin-lg: $spacer-4 + $spacer-3;
+$size-margin-lg: var(--size-margin-lg);
 $size-nav: $unit-10;
-$size-corner-radius: $unit-6;
+$size-corner-radius: 6vw;
