@@ -58,6 +58,15 @@ table {
 ::selection {
   background: rgba(0, 0, 0, 0.1); }
 
+:root {
+  --size-margin: 16px; }
+  @media (min-width: 768px) {
+    :root {
+      --size-margin: 32px; } }
+  @media (min-width: 1024px) {
+    :root {
+      --size-margin: 64px; } }
+
 html,
 body {
   font-size: 17px;
