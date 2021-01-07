@@ -20,6 +20,9 @@
   $: homeIntro = data.home?.intro || null
   $: homeBody = data.home?.paragraph || null
   $: homeVideoUrl = data.home?.video || null
+
+  $: seoImg = data.seo?.metaImage || null
+  $: seoDesc = data.seo?.description || null
 </script>
 
 <style type="text/scss">
@@ -41,8 +44,15 @@
   }
 </style>
 
+<Seo
+  pageTitle={null}
+  {baseTitle}
+  image={seoImg}
+  description={seoDesc}
+  baseUrl="https://google.com"
+  pageUrl="/" />
+
 <div class="foreground">
-  <Seo pageTitle={null} {baseTitle} />
   <Nav>{lat}°N, {lng}°W</Nav>
   <Preload {heading} {body} />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
