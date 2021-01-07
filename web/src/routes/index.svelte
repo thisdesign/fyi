@@ -1,33 +1,41 @@
-<script lang="ts">
-  import App from '../components/App.svelte'
-
+<script context="module" lang="ts">
   import { client } from '../lib/sanity'
   import type { Site } from '../types'
 
-  const siteQuery = `
-  *[_type == 'site' && _id == "site"][0]{
-      ...,
-      "inspiration":inspiration.documents[]-> {
-        image,
-        "slug": slug->current,
-        text,
-        title,
-        vimeoUrl,
-        "category": category->title,
-        href
-      },
-      "general":{
-        ...general,
-        "backgroundVideo": general.backgroundVideo.asset->url
-      },
-      "home":{
-        ...home,
-        "video": general.backgroundVideo.asset->url
-      }
-    }
-  `
+  export async function preload(page: any, session: any) {
+    const siteQuery = `
+      *[_type == 'site' && _id == "site"][0]{
+          ...,
+          "inspiration":inspiration.documents[]-> {
+            image,
+            "slug": slug->current,
+            text,
+            title,
+            vimeoUrl,
+            "category": category->title,
+            href
+          },
+          "general":{
+            ...general,
+            "backgroundVideo": general.backgroundVideo.asset->url
+          },
+          "home":{
+            ...home,
+            "video": general.backgroundVideo.asset->url
+          }
+        }
+      `
+    const site = await client.fetch(siteQuery)
 
-  const site: Promise<Site> = client.fetch(siteQuery)
+    return { site }
+  }
+</script>
+
+<script lang="ts">
+  import App from '../components/App.svelte'
+  export let site: Site
+
+  $: console.log(site)
 </script>
 
 <style type="text/scss">
@@ -36,9 +44,5 @@
 </style>
 
 <div>
-  {#await site}
-    loading...
-  {:then site}
-    <App data={site} />
-  {/await}
+  <App data={site} />
 </div>
