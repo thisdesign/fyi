@@ -19,8 +19,8 @@
       scrollTrigger: {
         trigger: '.home-outer',
         toggleActions: 'play reverse play reverse',
-        start: 'top center',
-        end: '+=250',
+        start: 'top bottom',
+        end: 'top top',
         scrub: true,
       },
     })

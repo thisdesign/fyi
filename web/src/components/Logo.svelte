@@ -5,7 +5,7 @@
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
   svg {
-    height: $spacer-3;
+    height: 24px;
   }
 </style>
 

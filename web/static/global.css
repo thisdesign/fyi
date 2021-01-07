@@ -104,7 +104,8 @@ button {
 
 .h1 {
   font-size: 70px;
-  line-height: 1; }
+  line-height: 1;
+  letter-spacing: -0.025em; }
 
 .p {
   max-width: 30em; }

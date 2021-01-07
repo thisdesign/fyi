@@ -21,12 +21,16 @@
 
     z-index: 90;
   }
+
+  .items {
+    font-size: 16px;
+  }
 </style>
 
 <nav>
   <Logo />
 
-  <div>
+  <div class="items">
     <slot />
   </div>
 </nav>
