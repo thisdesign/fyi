@@ -6,7 +6,7 @@
 
 <style type="text/scss">
   @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
+  @import '../style/breakpoints.scss';
 
   .wrapper {
     padding: $size-margin-lg $size-margin;
@@ -14,8 +14,10 @@
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    @include media('>=sm') {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
     margin-bottom: $size-margin-lg;
   }
 

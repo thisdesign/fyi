@@ -34,8 +34,6 @@
 <script lang="ts">
   import App from '../components/App.svelte'
   export let site: Site
-
-  $: console.log(site)
 </script>
 
 <style type="text/scss">

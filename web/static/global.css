@@ -112,9 +112,12 @@ button {
   cursor: pointer; }
 
 .h1 {
-  font-size: 5vw;
   line-height: 1;
-  letter-spacing: -0.025em; }
+  letter-spacing: -0.025em;
+  font-size: 8vw; }
+  @media (min-width: 768px) {
+    .h1 {
+      font-size: 5vw; } }
 
 .p {
   max-width: 30em; }

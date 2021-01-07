@@ -1,11 +1,11 @@
 <script lang="ts">
   import { gsap } from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import BlockContent from '@movingbrands/svelte-portable-text'
 
   import type { SanityBlockContent } from '../types'
 
   import { onMount } from 'svelte'
-  import BlockContent from './BlockContent.svelte'
 
   gsap.registerPlugin(ScrollTrigger)
 
@@ -29,7 +29,7 @@
 
 <style type="text/scss">
   @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
+  @import '../style/breakpoints.scss';
 
   .home {
     background: white;
@@ -44,9 +44,16 @@
   }
 
   .paragraph {
-    column-count: 2;
-    max-width: 50em;
+    @include media('>=sm') {
+      column-count: 2;
+      max-width: 50em;
+    }
+
     margin-bottom: $size-margin;
+
+    * {
+      border: 1px solid blue;
+    }
   }
 
   video {

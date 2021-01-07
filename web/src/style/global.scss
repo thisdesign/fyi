@@ -69,9 +69,13 @@ button {
 }
 
 .h1 {
-  font-size: 5vw;
   line-height: 1;
   letter-spacing: -0.025em;
+  font-size: 8vw;
+
+  @include media('>=sm') {
+    font-size: 5vw;
+  }
 }
 
 .p {

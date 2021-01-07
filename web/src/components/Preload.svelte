@@ -1,8 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
-
-  import Logo from './Logo.svelte'
   import Type from './Type.svelte'
   import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
   import gsap from 'gsap'
@@ -12,10 +8,6 @@
   export let heading: string | null
   export let body: string | null
   let node: HTMLElement
-
-  onMount(() => {
-    disableBodyScroll(node)
-  })
 
   function clearIntro() {
     const tl = gsap.timeline()
@@ -31,8 +23,6 @@
       scrollTo: 170,
       ease: 'Power3.easeInOut',
       delay: 0.4,
-    }).then(() => {
-      clearAllBodyScrollLocks()
     })
   }
 </script>
@@ -51,9 +41,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    position: fixed;
-    top: 0;
   }
 
   h2 {
