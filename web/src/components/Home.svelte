@@ -50,10 +50,6 @@
     }
 
     margin-bottom: $size-margin;
-
-    * {
-      border: 1px solid blue;
-    }
   }
 
   video {
