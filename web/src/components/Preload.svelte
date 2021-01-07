@@ -2,29 +2,24 @@
   import Type from './Type.svelte'
   import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
   import gsap from 'gsap'
+  import { onMount } from 'svelte'
 
   gsap.registerPlugin(ScrollToPlugin)
+
+  onMount(() => {
+    const tl = gsap.timeline()
+    tl.to(window, { duration: 0, scrollTo: 0 })
+    tl.to(window, {
+      duration: 1,
+      scrollTo: window.innerHeight * 0.15,
+      delay: 1,
+      ease: 'Power3.easeInOut',
+    })
+  })
 
   export let heading: string | null
   export let body: string | null
   let node: HTMLElement
-
-  function clearIntro() {
-    const tl = gsap.timeline()
-
-    tl.to(node, {
-      duration: 0.8,
-      ease: 'Power3.easeIn',
-      y: '-100%',
-    })
-
-    tl.to(window, {
-      duration: 0.7,
-      scrollTo: 170,
-      ease: 'Power3.easeInOut',
-      delay: 0.4,
-    })
-  }
 </script>
 
 <style type="text/scss">
@@ -48,7 +43,7 @@
   }
 </style>
 
-<div class="preload" bind:this={node} on:click={clearIntro}>
+<div class="preload" bind:this={node}>
   <div class="container">
     <h2 class="h1">
       <Type text={heading || ''} />
