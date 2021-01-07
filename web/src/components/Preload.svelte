@@ -11,7 +11,7 @@
     tl.to(window, { duration: 0, scrollTo: 0 })
     tl.to(window, {
       duration: 1,
-      scrollTo: window.innerHeight * 0.15,
+      scrollTo: window.innerHeight * 0.1,
       delay: 1,
       ease: 'Power3.easeInOut',
     })
