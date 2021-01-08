@@ -46,7 +46,7 @@
   {baseTitle}
   image={seoImg}
   description={seoDesc}
-  baseUrl="https://google.com"
+  baseUrl="https://fyidesign.ca"
   pageUrl="/" />
 
 <div class="foreground">
