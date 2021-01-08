@@ -2,6 +2,7 @@
   import type { Site } from '../types'
   import Home from './Home.svelte'
   import Inspiration from './Inspiration.svelte'
+  import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
 
@@ -9,6 +10,8 @@
 
   $: heading = data.preload?.preloadHead || null
   $: body = data.preload?.preloadBody || null
+
+  $: [lat, lng] = [data.preload?.lat || 0, data.preload?.lng || 0]
 
   $: baseTitle = data.seo?.title || 'FYi Design'
 
@@ -41,6 +44,7 @@
   }
 </style>
 
+<Nav {lat} {lng} />
 <Seo
   pageTitle={null}
   {baseTitle}

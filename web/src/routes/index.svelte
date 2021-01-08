@@ -44,6 +44,4 @@
   // @import '../style/breakpoints.scss';
 </style>
 
-<div>
-  <App data={site} />
-</div>
+<App data={site} />

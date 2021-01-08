@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { globalState } from '../stores/globalState'
+
   import Logo from './Logo.svelte'
 
-  const [lat, lng] = [0, 0]
-  let isCords: boolean = true
+  export let lat = 0
+  export let lng = 0
+
+  $: isCords = $globalState.isNavCords
 </script>
 
 <style type="text/scss">
@@ -47,6 +51,7 @@
       transform: translateY(-50%);
       display: flex;
       justify-content: flex-end;
+      transition: 300ms opacity ease;
 
       &.visible {
         opacity: 1;
@@ -58,7 +63,7 @@
     display: flex;
 
     li {
-      margin-left: $spacer-1;
+      margin-left: $spacer-2;
     }
   }
 </style>

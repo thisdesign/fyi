@@ -6,12 +6,16 @@
   import type { SanityBlockContent } from '../types'
 
   import { onMount } from 'svelte'
+  import { globalState } from '../stores/globalState'
 
   gsap.registerPlugin(ScrollTrigger)
 
   export let intro: SanityBlockContent | null
   export let body: SanityBlockContent | null
   export let videoUrl: string | null
+
+  const setCords = (cond: boolean) =>
+    globalState.update((state) => ({ ...state, isNavCords: cond }))
 
   onMount(() => {
     gsap.to('.home', {
@@ -22,6 +26,8 @@
         start: 'top bottom',
         end: 'top top',
         scrub: true,
+        onEnter: () => setCords(false),
+        onLeaveBack: () => setCords(true),
       },
     })
   })
