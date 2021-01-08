@@ -39,7 +39,7 @@
       gsap.to(wrapper, {
         y: getInspoY(),
         scale: isOpen ? 1 : 0.9,
-        duration: isOpen ? 1 : 0.5,
+        duration: 0.8,
         delay: 0.2,
         ease: 'Power3.easeInOut',
         borderRadius: isOpen ? 0 : 32,
@@ -80,21 +80,35 @@
     box-shadow: 0 0 64px rgba(0, 0, 0, 0.16);
   }
 
+  .nudge,
   .title {
-    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 75px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 300ms opacity ease;
+    transition: 1200ms opacity ease;
 
     &.hidden {
       opacity: 0;
     }
+  }
+
+  .title {
+    padding: $spacer-2 + $spacer-2;
+
+    button {
+      margin-right: $spacer-1;
+    }
+  }
+
+  .nudge {
+    cursor: pointer;
+
+    width: 100%;
+    height: 75px;
+
+    justify-content: center;
+    align-items: center;
   }
 
   .grid {
@@ -124,8 +138,12 @@
 <svelte:window on:resize={setWindowHeight} />
 
 <div class="wrapper" bind:this={wrapper}>
-  <div class="title" class:hidden={isOpen} on:click={() => setActive(true)}>
+  <div class="nudge" class:hidden={isOpen} on:click={() => setActive(true)}>
     View Inspiration
+  </div>
+  <div class="title" class:hidden={!isOpen}>
+    <button on:click={() => setActive(false)}>&times</button>
+    Inspiration
   </div>
   {#each items as item, i}
     <div class="grid">
