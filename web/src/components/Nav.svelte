@@ -69,7 +69,9 @@
 </style>
 
 <nav>
-  <Logo />
+  <a href="/">
+    <Logo />
+  </a>
 
   <div class="items">
     <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
