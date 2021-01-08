@@ -5,6 +5,8 @@
 
   export let data: InspirationSchema
   let { image, title, href, text, category } = data
+  let categorySlug = category?.slug?.current || ''
+  let categoryTitle = category?.title || null
 </script>
 
 <style type="text/scss">
@@ -42,7 +44,13 @@
       {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
       alt={title} />
     <div class="titleArea">
-      <h3>{title}<span>: {category}</span></h3>
+      <h3>
+        {title}
+        {#if categoryTitle && categorySlug}
+          <span>:
+            <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a></span>
+        {/if}
+      </h3>
 
       {#if href}
         <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>

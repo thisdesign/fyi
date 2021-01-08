@@ -1,5 +1,5 @@
 import type { SanityDocument } from '@sanity/client'
-import type { SanityBlockContent, SanityImage } from '../sanity'
+import type { SanityBlockContent, SanityImage, SanitySlug } from '../sanity'
 
 export type Site = SanityDocument & {
   _type: 'site'
@@ -28,7 +28,7 @@ export type Site = SanityDocument & {
 }
 
 export type InspirationSchema = {
-  category?: string
+  category?: { title: string; slug: SanitySlug }
   image?: SanityImage
   text?: SanityBlockContent
   title?: string

@@ -12,7 +12,10 @@
             text,
             title,
             vimeoUrl,
-            "category": category->title,
+            "category": category-> { 
+              title,
+              slug
+            },
             href
           },
           "general":{
