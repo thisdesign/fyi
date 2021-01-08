@@ -11,18 +11,23 @@
 
   let wrapper: HTMLElement
   let windowHeight = 0
-
-  const setWindowHeight = () => (windowHeight = window.innerHeight)
+  $: isOpen = $globalState.isInspirationActive
 
   onMount(() => {
     setWindowHeight()
   })
 
-  $: isOpen = $globalState.isInspirationActive
+  /**
+   * Fns
+   */
+  const setWindowHeight = () => (windowHeight = window.innerHeight)
 
   const setActive = (cond: boolean) =>
     globalState.update((prev) => ({ ...prev, isInspirationActive: cond }))
 
+  /**
+   * Animation
+   */
   $: {
     if (typeof window !== 'undefined') {
       gsap.to(wrapper, {
@@ -35,6 +40,10 @@
       })
     }
   }
+
+  /**
+   * Body scroll
+   */
 
   $: {
     if (isOpen) {
