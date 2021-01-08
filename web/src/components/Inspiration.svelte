@@ -7,7 +7,9 @@
 
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
+
   export let items: InspirationSchema[]
+  export let standAlone: boolean = false
 
   let wrapper: HTMLElement
   let windowHeight = 0
@@ -35,7 +37,7 @@
    * Animation
    */
   $: {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !standAlone) {
       gsap.to(wrapper, {
         y: getInspoY(),
         scale: isOpen ? 1 : 0.9,
@@ -72,12 +74,14 @@
     left: 0;
     width: 100%;
     transform-origin: top;
-    border-radius: $spacer-3;
     height: 100vh;
     overflow-y: scroll;
-    transform: translateY(100vh);
-    z-index: 100;
     box-shadow: 0 0 64px rgba(0, 0, 0, 0.16);
+
+    &:not(.standAlone) {
+      z-index: 100;
+      transform: translateY(100vh);
+    }
   }
 
   .nudge,
@@ -87,6 +91,10 @@
     left: 0;
     display: flex;
     transition: 1200ms opacity ease;
+
+    .standAlone & {
+      display: none;
+    }
 
     &.hidden {
       opacity: 0;
@@ -137,7 +145,7 @@
 
 <svelte:window on:resize={setWindowHeight} />
 
-<div class="wrapper" bind:this={wrapper}>
+<div class="wrapper" bind:this={wrapper} class:standAlone>
   <div class="nudge" class:hidden={isOpen} on:click={() => setActive(true)}>
     View Inspiration
   </div>
