@@ -16,6 +16,8 @@
 
   const setCords = (cond: boolean) =>
     globalState.update((state) => ({ ...state, isNavCords: cond }))
+  const setPeek = (cond: boolean) =>
+    globalState.update((state) => ({ ...state, isInspirationPeeking: cond }))
 
   onMount(() => {
     gsap.to('.home', {
@@ -28,6 +30,18 @@
         scrub: true,
         onEnter: () => setCords(false),
         onLeaveBack: () => setCords(true),
+      },
+    })
+  })
+
+  onMount(() => {
+    gsap.to('.inspoTrigger', {
+      scrollTrigger: {
+        trigger: '.inspoTrigger',
+        toggleActions: 'play reverse play reverse',
+        start: 'top bottom',
+        onEnter: () => setPeek(true),
+        onLeaveBack: () => setPeek(false),
       },
     })
   })
@@ -65,6 +79,10 @@
   .space {
     height: 100vh;
   }
+
+  .inspoTrigger {
+    display: block;
+  }
 </style>
 
 <div class="space" />
@@ -79,5 +97,6 @@
       </div>
       {#if videoUrl}<video src={videoUrl} muted controls />{/if}
     </div>
+    <span class="inspoTrigger" />
   </div>
 </div>

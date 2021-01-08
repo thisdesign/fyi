@@ -25,15 +25,21 @@
   const setActive = (cond: boolean) =>
     globalState.update((prev) => ({ ...prev, isInspirationActive: cond }))
 
+  // gets Y val for inspo card
+  $: getInspoY = () => {
+    if (isOpen) return 0
+    return $globalState.isInspirationPeeking ? windowHeight - 64 : windowHeight
+  }
+
   /**
    * Animation
    */
   $: {
     if (typeof window !== 'undefined') {
       gsap.to(wrapper, {
-        y: isOpen ? '0' : windowHeight - 64,
+        y: getInspoY(),
         scale: isOpen ? 1 : 0.9,
-        duration: 1,
+        duration: isOpen ? 1 : 0.5,
         delay: 0.2,
         ease: 'Power3.easeInOut',
         borderRadius: isOpen ? 0 : 32,
