@@ -83,9 +83,15 @@
   .inspoTrigger {
     display: block;
   }
+
+  #home {
+    position: relative;
+    top: -120px;
+  }
 </style>
 
 <div class="space" />
+<div id="home" />
 <div class="home-outer">
   <div class="home">
     <div class="container">
