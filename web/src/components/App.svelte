@@ -2,13 +2,10 @@
   import type { Site } from '../types'
   import Home from './Home.svelte'
   import Inspiration from './Inspiration.svelte'
-  import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
 
   export let data: Site
-
-  $: [lat, lng] = [data.preload?.lat || 0, data.preload?.lng || 0]
 
   $: heading = data.preload?.preloadHead || null
   $: body = data.preload?.preloadBody || null
@@ -53,7 +50,6 @@
   pageUrl="/" />
 
 <div class="foreground">
-  <Nav>{lat}°N, {lng}°W</Nav>
   <Preload {heading} {body} />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
   <Inspiration items={data.inspiration || []} />
