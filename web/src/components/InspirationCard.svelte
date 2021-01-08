@@ -23,8 +23,13 @@
       justify-content: space-between;
       margin-bottom: $spacer-1;
 
-      span {
+      h3 {
+        display: flex;
+      }
+
+      a {
         opacity: 0.5;
+        display: inline-block;
       }
     }
 
@@ -47,8 +52,7 @@
       <h3>
         {title}
         {#if categoryTitle && categorySlug}
-          <span>:
-            <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a></span>
+          <a href={`/inspiration/${categorySlug}`}>: {categoryTitle}</a>
         {/if}
       </h3>
 
