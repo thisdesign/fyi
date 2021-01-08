@@ -11,6 +11,25 @@
   .wrapper {
     padding: $size-margin-lg $size-margin;
     background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translate3d(0, calc(100vh - #{$spacer-4}), 0) scale(0.9);
+    transform-origin: top;
+    border-radius: $spacer-3;
+  }
+
+  .title {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .grid {
@@ -38,6 +57,7 @@
 </style>
 
 <div class="wrapper">
+  <div class="title">View Inspiration</div>
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>
