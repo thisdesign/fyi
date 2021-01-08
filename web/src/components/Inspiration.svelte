@@ -2,7 +2,7 @@
   import gsap from 'gsap'
   import { onMount } from 'svelte'
 
-  import { globalState } from '../stores/globalState'
+  import { globalState, setInspirationActive } from '../stores/globalState'
   import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
 
   import type { InspirationSchema } from '../types'
@@ -23,9 +23,6 @@
    * Fns
    */
   const setWindowHeight = () => (windowHeight = window.innerHeight)
-
-  const setActive = (cond: boolean) =>
-    globalState.update((prev) => ({ ...prev, isInspirationActive: cond }))
 
   // gets Y val for inspo card
   $: getInspoY = () => {
@@ -146,11 +143,14 @@
 <svelte:window on:resize={setWindowHeight} />
 
 <div class="wrapper" bind:this={wrapper} class:standAlone>
-  <div class="nudge" class:hidden={isOpen} on:click={() => setActive(true)}>
+  <div
+    class="nudge"
+    class:hidden={isOpen}
+    on:click={() => setInspirationActive(true)}>
     View Inspiration
   </div>
   <div class="title" class:hidden={!isOpen}>
-    <button on:click={() => setActive(false)}>&times</button>
+    <button on:click={() => setInspirationActive(false)}>&times</button>
     Inspiration
   </div>
   {#each items as item, i}

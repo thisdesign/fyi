@@ -5,3 +5,6 @@ export const globalState = writable({
   isInspirationActive: false,
   isInspirationPeeking: false,
 })
+
+export const setInspirationActive = (cond: boolean) =>
+  globalState.update((prev) => ({ ...prev, isInspirationActive: cond }))

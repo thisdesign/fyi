@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { globalState } from '../stores/globalState'
+  import { globalState, setInspirationActive } from '../stores/globalState'
 
   import Logo from './Logo.svelte'
 
@@ -77,7 +77,11 @@
     <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
     <ul class="item" class:visible={!isCords}>
       <li><a href="#home">Home</a></li>
-      <li><a href="#inspiration">Inspiration</a></li>
+      <li>
+        <a
+          href="#inspiration"
+          on:click={() => setInspirationActive(true)}>Inspiration</a>
+      </li>
     </ul>
   </div>
 </nav>
