@@ -1,7 +1,39 @@
 <script lang="ts">
+  import gsap from 'gsap'
+  import { onMount } from 'svelte'
+
+  import { globalState } from '../stores/globalState'
+
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
   export let items: InspirationSchema[]
+
+  let wrapper: HTMLElement
+  let windowHeight = 0
+
+  const setWindowHeight = () => (windowHeight = window.innerHeight)
+
+  onMount(() => {
+    setWindowHeight()
+  })
+
+  $: isOpen = $globalState.isInspirationActive
+
+  const setActive = (cond: boolean) =>
+    globalState.update((prev) => ({ ...prev, isInspirationActive: cond }))
+
+  $: {
+    if (typeof window !== 'undefined') {
+      gsap.to(wrapper, {
+        y: isOpen ? '0' : windowHeight - 64,
+        scale: isOpen ? 1 : 0.9,
+        duration: 1,
+        delay: 0.2,
+        ease: 'Power3.easeInOut',
+        borderRadius: isOpen ? 0 : 32,
+      })
+    }
+  }
 </script>
 
 <style type="text/scss">
@@ -15,9 +47,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    transform: translate3d(0, calc(100vh - #{$spacer-4}), 0) scale(0.9);
     transform-origin: top;
     border-radius: $spacer-3;
+    height: 100vh;
+    overflow-y: scroll;
+    transform: translateY(100vh);
+    z-index: 100;
   }
 
   .title {
@@ -30,6 +65,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.hidden {
+      opacity: 0;
+    }
   }
 
   .grid {
@@ -56,8 +95,12 @@
   }
 </style>
 
-<div class="wrapper">
-  <div class="title">View Inspiration</div>
+<svelte:window on:resize={setWindowHeight} />
+
+<div class="wrapper" bind:this={wrapper}>
+  <div class="title" class:hidden={isOpen} on:click={() => setActive(true)}>
+    View Inspiration
+  </div>
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>

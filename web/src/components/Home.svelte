@@ -43,6 +43,7 @@
     transform: scale(0.9);
     transform-origin: top;
     border-radius: $size-corner-radius $size-corner-radius 0 0;
+    margin-bottom: 50vh;
   }
 
   .h1 {
@@ -67,7 +68,6 @@
   }
 </style>
 
-w
 <div class="space" />
 <div class="home-outer">
   <div class="home">

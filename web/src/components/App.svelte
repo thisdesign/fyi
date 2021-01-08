@@ -56,6 +56,6 @@
 <div class="foreground">
   <Preload {heading} {body} />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
-  <Inspiration items={data.inspiration || []} />
 </div>
+<Inspiration items={data.inspiration || []} />
 <video src={videoSrc} autoplay loop muted />
