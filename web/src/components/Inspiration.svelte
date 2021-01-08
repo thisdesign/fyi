@@ -3,6 +3,7 @@
   import { onMount } from 'svelte'
 
   import { globalState } from '../stores/globalState'
+  import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
 
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
@@ -34,6 +35,14 @@
       })
     }
   }
+
+  $: {
+    if (isOpen) {
+      disableBodyScroll(wrapper)
+    } else {
+      clearAllBodyScrollLocks()
+    }
+  }
 </script>
 
 <style type="text/scss">
@@ -53,6 +62,7 @@
     overflow-y: scroll;
     transform: translateY(100vh);
     z-index: 100;
+    box-shadow: 0 0 64px rgba(0, 0, 0, 0.16);
   }
 
   .title {
@@ -65,6 +75,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 300ms opacity ease;
 
     &.hidden {
       opacity: 0;
