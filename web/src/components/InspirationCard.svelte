@@ -2,6 +2,7 @@
   import { buildImage } from '../lib/ResponsiveImage'
   import type { InspirationSchema } from '../types'
   import BlockContent from './BlockContent.svelte'
+  import PlayButton from './PlayButton.svelte'
 
   export let data: InspirationSchema
   let { image, title, href, text, category } = data
@@ -41,13 +42,29 @@
       filter: brightness(0.96);
     }
   }
+
+  .imgWrap {
+    position: relative;
+
+    :global(svg) {
+      height: $spacer-3;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 10;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
 </style>
 
 <div>
   <article>
-    <img
-      {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
-      alt={title} />
+    <div class="imgWrap">
+      <PlayButton />
+      <img
+        {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
+        alt={title} />
+    </div>
     <div class="titleArea">
       <h3>
         {title}
@@ -60,6 +77,7 @@
         <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
       {/if}
     </div>
+
     <div class="p">
       <BlockContent blocks={text || null} />
     </div>
