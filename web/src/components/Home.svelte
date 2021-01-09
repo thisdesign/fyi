@@ -101,7 +101,7 @@
       <div class="paragraph">
         <BlockContent blocks={body} />
       </div>
-      {#if videoUrl}<video src={videoUrl} muted controls />{/if}
+      {#if videoUrl}<video src={videoUrl} muted autoplay />{/if}
     </div>
     <span class="inspoTrigger" />
   </div>
