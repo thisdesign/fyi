@@ -74,8 +74,9 @@
 
   video {
     width: 100%;
-    border-radius: $size-corner-radius;
+    border-radius: $spacer-3;
   }
+
   .space {
     height: 100vh;
   }

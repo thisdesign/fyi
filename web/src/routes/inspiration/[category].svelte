@@ -19,11 +19,11 @@
   @import '../../style/vars.scss';
   // @import '../style/breakpoints.scss';
 
-  .wrap {
-    margin-top: $size-nav;
-    padding: $size-margin;
-    background: white;
-  }
+  // .wrap {
+  //   margin-top: $size-nav;
+  //   padding: $size-margin;
+  //   background: white;
+  // }
 </style>
 
 <Nav />

@@ -50,6 +50,10 @@ table {
 * Testing
 *
 **/
+@font-face {
+  font-family: 'Helvetica Now';
+  src: url(fonts/font.woff) format("woff"), url(fonts/font.woff) format("woff2"); }
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -74,7 +78,7 @@ html,
 body {
   font-size: 17px;
   line-height: 1.2;
-  font-family: 'Helvetica Now', Helvetica, arial, sans-serif; }
+  font-family: 'Helvetica Now', serif; }
   @media (min-width: 768px) {
     html,
     body {
@@ -123,7 +127,8 @@ button {
       font-size: 5vw; } }
 
 .p {
-  max-width: 30em; }
+  max-width: 30em;
+  letter-spacing: -0.02em; }
 
 .container {
   max-width: 1400px;
