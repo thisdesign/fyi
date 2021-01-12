@@ -37,6 +37,12 @@ export default {
     },
 
     {
+      name: "video",
+      description: "Link Video File",
+      type: "file",
+    },
+
+    {
       name: "image",
       description: "Video Placeholder",
       type: "image",
