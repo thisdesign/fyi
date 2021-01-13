@@ -10,10 +10,11 @@
 
   export let items: InspirationSchema[]
   export let standAlone: boolean = false
+  export let forceOpen: boolean = false
 
   let wrapper: HTMLElement
   let windowHeight = 0
-  $: isOpen = $globalState.isInspirationActive
+  $: isOpen = forceOpen || $globalState.isInspirationActive
 
   onMount(() => {
     setWindowHeight()

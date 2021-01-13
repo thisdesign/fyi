@@ -27,12 +27,11 @@
     width: 100%;
 
     z-index: 90;
-    mix-blend-mode: difference;
 
-    color: white;
+    color: black;
 
     :global(*) {
-      fill: white;
+      fill: black;
     }
   }
 

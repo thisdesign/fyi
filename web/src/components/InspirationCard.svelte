@@ -5,7 +5,7 @@
   import PlayButton from './PlayButton.svelte'
 
   export let data: InspirationSchema
-  let { image, title, href, text, category } = data
+  let { image, title, href, text, category, vimeoUrl } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null
 </script>
@@ -43,7 +43,7 @@
     }
   }
 
-  .imgWrap {
+  .contentWrap {
     position: relative;
 
     :global(svg) {
@@ -59,7 +59,7 @@
 
 <div>
   <article>
-    <div class="imgWrap">
+    <div class="contentWrap">
       <PlayButton />
       <img
         {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
