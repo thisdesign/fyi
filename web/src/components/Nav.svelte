@@ -1,5 +1,6 @@
 <script lang="ts">
   import { globalState, setInspirationActive } from '../stores/globalState'
+  import type { NavRoute } from '../types'
 
   import Logo from './Logo.svelte'
 
@@ -7,7 +8,8 @@
   export let lng = 0
   export let isDark: boolean
 
-  $: isCords = $globalState.isNavCords
+  export let route: NavRoute
+  $: isCords = route === 'INTRO'
 </script>
 
 <style type="text/scss">
@@ -74,6 +76,27 @@
 
     li {
       margin-left: $spacer-2;
+      position: relative;
+
+      &.active:after {
+        width: 100%;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        bottom: -1px;
+        left: 0;
+
+        transition: 500ms width ease-in-out;
+
+        border-bottom: 1px solid white;
+
+        .isDark & {
+          border-bottom: 1px solid black;
+        }
+      }
     }
   }
 </style>
@@ -86,12 +109,13 @@
   <div class="items">
     <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
     <ul class="item" class:visible={!isCords}>
-      <li><a href="#home">Home</a></li>
-      <li>
+      <li class:active={route === 'HOME'}><a href="#home">Home</a></li>
+      <li class:active={route === 'INSPIRATION'}>
         <a
           href="#inspiration"
           on:click={() => setInspirationActive(true)}>Inspiration</a>
       </li>
+      <li>Contact</li>
     </ul>
   </div>
 </nav>

@@ -1,8 +1,9 @@
 <script lang="ts">
   import gsap from 'gsap'
   import { onMount } from 'svelte'
+  import { globalState } from '../stores/globalState'
 
-  import type { Site } from '../types'
+  import type { NavRoute, Site } from '../types'
   import Home from './Home.svelte'
   import Inspiration from './Inspiration.svelte'
   import Nav from './Nav.svelte'
@@ -29,6 +30,8 @@
   $: seoImg = data.seo?.metaImage || null
   $: seoDesc = data.seo?.description || null
 
+  let isBelowHome = false
+
   onMount(() => {
     gsap.to('.space', {
       scrollTrigger: {
@@ -36,12 +39,28 @@
         toggleActions: 'play reverse play reverse',
         start: 'top top',
         onEnter: () => (navThemeDark = false),
-        onLeave: () => (navThemeDark = true),
+        onLeave: () => {
+          navThemeDark = true
+          isBelowHome = true
+        },
+
+        onEnterBack: () => {
+          navThemeDark = false
+          isBelowHome = false
+        },
         onLeaveBack: () => (navThemeDark = true),
-        onEnterBack: () => (navThemeDark = false),
       },
     })
   })
+
+  let navRoute: NavRoute
+
+  $: {
+    if ($globalState.isInspirationActive) navRoute = 'INSPIRATION'
+    else if (isBelowHome) navRoute = 'HOME'
+    else if ($globalState.isNavCords) navRoute = 'INTRO'
+    else navRoute = 'NONE'
+  }
 </script>
 
 <style type="text/scss">
@@ -67,7 +86,7 @@
   }
 </style>
 
-<Nav {lat} {lng} isDark={navThemeDark} />
+<Nav {lat} {lng} isDark={navThemeDark} route={navRoute} />
 <Seo
   pageTitle={null}
   {baseTitle}
