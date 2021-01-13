@@ -77,10 +77,6 @@
     border-radius: $spacer-3;
   }
 
-  .space {
-    height: 100vh;
-  }
-
   .inspoTrigger {
     display: block;
   }
@@ -91,7 +87,6 @@
   }
 </style>
 
-<div class="space" />
 <div id="home" />
 <div class="home-outer">
   <div class="home">

@@ -5,6 +5,7 @@
 
   export let lat = 0
   export let lng = 0
+  export let isDark: boolean
 
   $: isCords = $globalState.isNavCords
 </script>
@@ -27,11 +28,21 @@
     width: 100%;
 
     z-index: 90;
+    color: white;
 
-    color: black;
+    transition: 200ms color ease;
 
     :global(*) {
-      fill: black;
+      fill: white;
+      transition: 200ms fill ease;
+    }
+
+    &.isDark {
+      color: black;
+
+      :global(*) {
+        fill: black;
+      }
     }
   }
 
@@ -67,7 +78,7 @@
   }
 </style>
 
-<nav>
+<nav class:isDark>
   <a href="/">
     <Logo />
   </a>

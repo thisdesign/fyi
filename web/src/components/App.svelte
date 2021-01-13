@@ -1,4 +1,7 @@
 <script lang="ts">
+  import gsap from 'gsap'
+  import { onMount } from 'svelte'
+
   import type { Site } from '../types'
   import Home from './Home.svelte'
   import Inspiration from './Inspiration.svelte'
@@ -7,6 +10,8 @@
   import Seo from './Seo.svelte'
 
   export let data: Site
+
+  let navThemeDark = true
 
   $: heading = data.preload?.preloadHead || null
   $: body = data.preload?.preloadBody || null
@@ -23,6 +28,20 @@
 
   $: seoImg = data.seo?.metaImage || null
   $: seoDesc = data.seo?.description || null
+
+  onMount(() => {
+    gsap.to('.space', {
+      scrollTrigger: {
+        trigger: '.space',
+        toggleActions: 'play reverse play reverse',
+        start: 'top top',
+        onEnter: () => (navThemeDark = false),
+        onLeave: () => (navThemeDark = true),
+        onLeaveBack: () => (navThemeDark = true),
+        onEnterBack: () => (navThemeDark = false),
+      },
+    })
+  })
 </script>
 
 <style type="text/scss">
@@ -42,9 +61,13 @@
     position: relative;
     z-index: 10;
   }
+
+  .space {
+    height: 100vh;
+  }
 </style>
 
-<Nav {lat} {lng} />
+<Nav {lat} {lng} isDark={navThemeDark} />
 <Seo
   pageTitle={null}
   {baseTitle}
@@ -55,6 +78,7 @@
 
 <div class="foreground">
   <Preload {heading} {body} />
+  <div class="space" />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
 </div>
 <Inspiration items={data.inspiration || []} />
