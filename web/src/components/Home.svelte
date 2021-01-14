@@ -73,6 +73,10 @@
     transform: scale(0.9);
     transform-origin: top;
     border-radius: $size-corner-radius $size-corner-radius 0 0;
+
+    :global(p) {
+      margin-bottom: 1rem;
+    }
   }
 
   .h1 {
