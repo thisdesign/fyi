@@ -10,6 +10,8 @@
 
   export let route: NavRoute
 
+  let isContactOpen = true
+
   $: currentRoute = route
   let prevRoute: NavRoute = 'NONE'
 
@@ -50,7 +52,18 @@
         >
       </li>
 
-      <li>Contact</li>
+      <li
+        on:mouseover={() => setMouseOver('CONTACT')}
+        on:mouseout={() => setMouseOut()}
+        class:active={currentRoute === 'CONTACT'}
+        on:click={() => (isContactOpen = !isContactOpen)}
+      >
+        {#if isContactOpen}
+          Contact
+        {:else}
+          email@goes.here.com
+        {/if}
+      </li>
     </ul>
   </div>
 </nav>
