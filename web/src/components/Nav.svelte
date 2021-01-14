@@ -61,7 +61,7 @@
         {#if isContactOpen}
           Contact
         {:else}
-          email@goes.here.com
+          <a href="mailto:info@fyidesign.ca">info@fyidesign.ca</a>
         {/if}
       </li>
     </ul>
@@ -133,6 +133,7 @@
     li {
       margin-left: $spacer-2;
       position: relative;
+      cursor: pointer;
 
       &.active:after {
         width: 100%;
