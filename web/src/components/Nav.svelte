@@ -12,6 +12,25 @@
   $: isCords = route === 'INTRO'
 </script>
 
+<nav class:isDark>
+  <a href="/">
+    <Logo />
+  </a>
+
+  <div class="items">
+    <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
+    <ul class="item" class:visible={!isCords}>
+      <li class:active={route === 'HOME'}><a href="#home">Home</a></li>
+      <li class:active={route === 'INSPIRATION'}>
+        <a href="#inspiration" on:click={() => setInspirationActive(true)}
+          >Inspiration</a
+        >
+      </li>
+      <li>Contact</li>
+    </ul>
+  </div>
+</nav>
+
 <style type="text/scss">
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
@@ -100,22 +119,3 @@
     }
   }
 </style>
-
-<nav class:isDark>
-  <a href="/">
-    <Logo />
-  </a>
-
-  <div class="items">
-    <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
-    <ul class="item" class:visible={!isCords}>
-      <li class:active={route === 'HOME'}><a href="#home">Home</a></li>
-      <li class:active={route === 'INSPIRATION'}>
-        <a
-          href="#inspiration"
-          on:click={() => setInspirationActive(true)}>Inspiration</a>
-      </li>
-      <li>Contact</li>
-    </ul>
-  </div>
-</nav>

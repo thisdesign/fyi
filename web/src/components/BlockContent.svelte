@@ -5,11 +5,11 @@
   export let blocks: SanityBlockContent | null
 </script>
 
+{#if blocks}
+  <BlockContent {blocks} />
+{/if}
+
 <style type="text/scss">
   // @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
 </style>
-
-{#if blocks}
-  <BlockContent {blocks} />
-{/if}

@@ -47,6 +47,22 @@
   })
 </script>
 
+<div id="home" />
+<div class="home-outer">
+  <div class="home">
+    <div class="container">
+      <h2 class="h1">
+        <BlockContent blocks={intro} />
+      </h2>
+      <div class="paragraph">
+        <BlockContent blocks={body} />
+      </div>
+      {#if videoUrl}<video src={videoUrl} muted autoplay />{/if}
+    </div>
+    <span class="inspoTrigger" />
+  </div>
+</div>
+
 <style type="text/scss">
   @import '../style/vars.scss';
   @import '../style/breakpoints.scss';
@@ -86,19 +102,3 @@
     top: -120px;
   }
 </style>
-
-<div id="home" />
-<div class="home-outer">
-  <div class="home">
-    <div class="container">
-      <h2 class="h1">
-        <BlockContent blocks={intro} />
-      </h2>
-      <div class="paragraph">
-        <BlockContent blocks={body} />
-      </div>
-      {#if videoUrl}<video src={videoUrl} muted autoplay />{/if}
-    </div>
-    <span class="inspoTrigger" />
-  </div>
-</div>

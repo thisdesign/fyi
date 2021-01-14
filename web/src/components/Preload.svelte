@@ -22,6 +22,17 @@
   let node: HTMLElement
 </script>
 
+<div class="preload" bind:this={node}>
+  <div class="container">
+    <h2 class="h1">
+      <Type text={heading || ''} />
+    </h2>
+    <p class="p">
+      <Type text={body || ''} />
+    </p>
+  </div>
+</div>
+
 <style type="text/scss">
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
@@ -42,14 +53,3 @@
     margin-bottom: $size-margin;
   }
 </style>
-
-<div class="preload" bind:this={node}>
-  <div class="container">
-    <h2 class="h1">
-      <Type text={heading || ''} />
-    </h2>
-    <p class="p">
-      <Type text={body || ''} />
-    </p>
-  </div>
-</div>

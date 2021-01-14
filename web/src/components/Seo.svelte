@@ -46,7 +46,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
   <meta httpEquiv="Accept-CH" content="DPR, Width, Viewport-Width" />
   <meta property="og:title" content={title} />
   <meta property="og:locale" content="en_US" />

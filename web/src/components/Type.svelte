@@ -25,12 +25,12 @@
   }
 </script>
 
+{#if isMounted}
+  {#each chars as char, i}<span in:typeIn={{ i }}>{char}</span>{/each}
+{/if}
+
 <style type="text/scss">
   span {
     opacity: 0;
   }
 </style>
-
-{#if isMounted}
-  {#each chars as char, i}<span in:typeIn={{ i }}>{char}</span>{/each}
-{/if}

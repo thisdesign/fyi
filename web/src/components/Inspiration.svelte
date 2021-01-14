@@ -60,6 +60,27 @@
   }
 </script>
 
+<svelte:window on:resize={setWindowHeight} />
+
+<div class="wrapper" bind:this={wrapper} class:standAlone>
+  <div
+    class="nudge"
+    class:hidden={isOpen}
+    on:click={() => setInspirationActive(true)}
+  >View Inspiration</div>
+  <div class="title" class:hidden={!isOpen}>
+    <button on:click={() => setInspirationActive(false)}>&times</button>
+    Inspiration
+  </div>
+  {#each items as item, i}
+    <div class="grid">
+      <div class={`row layout-${i % 4}`}>
+        <InspirationCard data={item} />
+      </div>
+    </div>
+  {/each}
+</div>
+
 <style type="text/scss">
   @import '../style/vars.scss';
   @import '../style/breakpoints.scss';
@@ -140,25 +161,3 @@
     }
   }
 </style>
-
-<svelte:window on:resize={setWindowHeight} />
-
-<div class="wrapper" bind:this={wrapper} class:standAlone>
-  <div
-    class="nudge"
-    class:hidden={isOpen}
-    on:click={() => setInspirationActive(true)}>
-    View Inspiration
-  </div>
-  <div class="title" class:hidden={!isOpen}>
-    <button on:click={() => setInspirationActive(false)}>&times</button>
-    Inspiration
-  </div>
-  {#each items as item, i}
-    <div class="grid">
-      <div class={`row layout-${i % 4}`}>
-        <InspirationCard data={item} />
-      </div>
-    </div>
-  {/each}
-</div>

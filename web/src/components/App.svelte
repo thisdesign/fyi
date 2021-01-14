@@ -9,6 +9,7 @@
   import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
+  import VimeoPlayer from './VimeoPlayer.svelte'
 
   export let data: Site
 
@@ -63,6 +64,24 @@
   }
 </script>
 
+<Nav {lat} {lng} isDark={navThemeDark} route={navRoute} />
+<Seo
+  pageTitle={null}
+  {baseTitle}
+  image={seoImg}
+  description={seoDesc}
+  baseUrl="https://fyidesign.ca"
+  pageUrl="/"
+/>
+
+<div class="foreground">
+  <Preload {heading} {body} />
+  <div class="space" />
+  <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+</div>
+<Inspiration items={data.inspiration || []} />
+<video src={videoSrc} autoplay loop muted />
+
 <style type="text/scss">
   // @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
@@ -85,20 +104,3 @@
     height: 100vh;
   }
 </style>
-
-<Nav {lat} {lng} isDark={navThemeDark} route={navRoute} />
-<Seo
-  pageTitle={null}
-  {baseTitle}
-  image={seoImg}
-  description={seoDesc}
-  baseUrl="https://fyidesign.ca"
-  pageUrl="/" />
-
-<div class="foreground">
-  <Preload {heading} {body} />
-  <div class="space" />
-  <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
-</div>
-<Inspiration items={data.inspiration || []} />
-<video src={videoSrc} autoplay loop muted />
