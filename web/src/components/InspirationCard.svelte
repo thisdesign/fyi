@@ -2,21 +2,28 @@
   import { buildImage } from '../lib/ResponsiveImage'
   import type { InspirationSchema } from '../types'
   import BlockContent from './BlockContent.svelte'
-  import PlayButton from './PlayButton.svelte'
+  import VimeoPlayer from './VimeoPlayer.svelte'
 
   export let data: InspirationSchema
   let { image, title, href, text, category, vimeoUrl } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null
+
+  console.log(vimeoUrl)
+
+  let isPlaying = false
 </script>
 
 <div>
   <article>
-    <div class="contentWrap">
-      <PlayButton />
+    <div class="contentWrap" on:click={() => (isPlaying = true)}>
+      {#if vimeoUrl}
+        <VimeoPlayer url={vimeoUrl} {isPlaying} />
+      {/if}
       <img
         {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
         alt={title}
+        class:visible={!isPlaying}
       />
     </div>
     <div class="titleArea">
@@ -63,16 +70,22 @@
     }
 
     img {
-      border-radius: $spacer-3;
-      display: block;
+      display: none;
       width: 100%;
-      margin-bottom: $spacer-3;
+
       filter: brightness(0.96);
+
+      &.visible {
+        display: block;
+      }
     }
   }
 
   .contentWrap {
     position: relative;
+    border-radius: $spacer-3;
+    margin-bottom: $spacer-3;
+    overflow: hidden;
 
     :global(svg) {
       height: $spacer-3;
