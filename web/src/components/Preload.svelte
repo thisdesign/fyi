@@ -32,21 +32,32 @@
     </p>
   </div>
 </div>
+<div class="scrollIndicator">Scroll</div>
 
 <style type="text/scss">
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
+
+  .scrollIndicator {
+    color: white;
+    text-align: center;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .preload {
     padding: $size-margin;
     padding-top: $size-nav;
     background: white;
     // border-radius: 0 0 $size-corner-radius $size-corner-radius;
-    height: 100vh;
+    height: calc(100vh + 2vw);
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 0 0 $size-corner-radius-sm $size-corner-radius-sm;
   }
 
   h2 {

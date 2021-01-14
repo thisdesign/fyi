@@ -78,7 +78,7 @@ button {
 
 .h1 {
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.05em;
   font-size: 8vw;
 
   @include media('>=sm') {
