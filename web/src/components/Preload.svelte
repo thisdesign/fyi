@@ -57,7 +57,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 0 0 $size-corner-radius-sm $size-corner-radius-sm;
+    border-radius: 0 0 $size-corner-radius $size-corner-radius;
   }
 
   h2 {

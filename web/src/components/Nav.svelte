@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { globalState, setInspirationActive } from '../stores/globalState'
+  import { setInspirationActive } from '../stores/globalState'
   import type { NavRoute } from '../types'
 
   import Logo from './Logo.svelte'
@@ -9,7 +9,19 @@
   export let isDark: boolean
 
   export let route: NavRoute
+
+  $: currentRoute = route
+  let prevRoute: NavRoute = 'NONE'
+
   $: isCords = route === 'INTRO'
+
+  const setMouseOver = (r: NavRoute) => {
+    prevRoute = currentRoute
+    currentRoute = r
+  }
+  const setMouseOut = () => {
+    currentRoute = prevRoute
+  }
 </script>
 
 <nav class:isDark>
@@ -20,12 +32,24 @@
   <div class="items">
     <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
     <ul class="item" class:visible={!isCords}>
-      <li class:active={route === 'HOME'}><a href="#home">Home</a></li>
-      <li class:active={route === 'INSPIRATION'}>
+      <li
+        class:active={currentRoute === 'HOME'}
+        on:mouseover={() => setMouseOver('HOME')}
+        on:mouseout={() => setMouseOut()}
+      >
+        <a href="#home">Home</a>
+      </li>
+
+      <li
+        class:active={currentRoute === 'INSPIRATION'}
+        on:mouseover={() => setMouseOver('INSPIRATION')}
+        on:mouseout={() => setMouseOut()}
+      >
         <a href="#inspiration" on:click={() => setInspirationActive(true)}
           >Inspiration</a
         >
       </li>
+
       <li>Contact</li>
     </ul>
   </div>
