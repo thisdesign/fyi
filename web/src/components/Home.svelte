@@ -15,8 +15,6 @@
   export let body: SanityBlockContent | null
   export let videoUrl: string | null
 
-  const setCords = (cond: boolean) =>
-    globalState.update((state) => ({ ...state, isNavCords: cond }))
   const setPeek = (cond: boolean) =>
     globalState.update((state) => ({ ...state, isInspirationPeeking: cond }))
 
@@ -29,8 +27,8 @@
         start: 'top bottom',
         end: 'top top',
         scrub: true,
-        onEnter: () => setCords(false),
-        onLeaveBack: () => setCords(true),
+        onEnter: () => history.pushState({}, '', '#home'),
+        onLeaveBack: () => history.pushState({}, '', ''),
       },
     })
   })

@@ -1,6 +1,6 @@
 <script lang="ts">
   import gsap from 'gsap'
-  import { onMount } from 'svelte'
+  import { onDestroy, onMount } from 'svelte'
   import { globalState } from '../stores/globalState'
 
   import type { NavRoute, Site } from '../types'
@@ -13,6 +13,17 @@
   export let data: Site
 
   let navThemeDark = true
+
+  let hash = ''
+
+  const handleHashChange = () => {
+    $globalState.hash = window.location.hash.replace('#', '')
+  }
+
+  onMount(() => {
+    handleHashChange()
+    window.addEventListener('hashchange', handleHashChange, false)
+  })
 
   $: heading = data.preload?.preloadHead || null
   $: body = data.preload?.preloadBody || null

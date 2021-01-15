@@ -2,7 +2,7 @@
   import gsap from 'gsap'
   import { onMount } from 'svelte'
 
-  import { globalState, setInspirationActive } from '../stores/globalState'
+  import { globalState } from '../stores/globalState'
   import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
 
   import type { InspirationSchema } from '../types'
@@ -14,7 +14,7 @@
 
   let wrapper: HTMLElement
   let windowHeight = 0
-  $: isOpen = forceOpen || $globalState.isInspirationActive
+  $: isOpen = forceOpen || $globalState.hash === 'inspiration'
 
   onMount(() => {
     setWindowHeight()
@@ -63,13 +63,11 @@
 <svelte:window on:resize={setWindowHeight} />
 
 <div class="wrapper" bind:this={wrapper} class:standAlone>
-  <div
-    class="nudge"
-    class:hidden={isOpen}
-    on:click={() => setInspirationActive(true)}
-  >View Inspiration</div>
+  <div class="nudge" class:hidden={isOpen}>
+    <a href="/#inspiration">View Inspiration</a>
+  </div>
   <div class="title" class:hidden={!isOpen}>
-    <button on:click={() => setInspirationActive(false)}>&times</button>
+    <a href="/#home">&times;&nbsp;</a>
     Inspiration
   </div>
   {#each items as item, i}

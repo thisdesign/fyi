@@ -1,35 +1,29 @@
 <script lang="ts">
-  import { globalState, setInspirationActive } from '../stores/globalState'
-  import type { NavRoute } from '../types'
+  import { globalState } from '../stores/globalState'
 
   import Logo from './Logo.svelte'
 
   export let lat = 0
   export let lng = 0
-  export let isDark: boolean
-
-  export let route: NavRoute
 
   let isContactOpen = true
+  let hoveredRoute: string | null = null
 
-  $: currentRoute = route
-  let prevRoute: NavRoute = 'NONE'
-
-  $: isCords = route === 'INTRO'
-
-  const setMouseOver = (r: NavRoute) => {
-    prevRoute = currentRoute
-    currentRoute = r
+  const setMouseOver = (anchorRoute: string) => {
+    hoveredRoute = anchorRoute
   }
   const setMouseOut = () => {
-    currentRoute = prevRoute
+    hoveredRoute = null
   }
 
-  $: showLogo = !$globalState.isInspirationActive
+  $: hash = $globalState.hash
+  $: isCords = $globalState.hash = ''
+  $: currentRoute = hoveredRoute || hash
+  $: isDark = true
 </script>
 
 <nav class:isDark>
-  <a href="/" class:hidden={!showLogo} class="logo">
+  <a href="/" class:hidden={hash === 'inspiration'} class="logo">
     <Logo />
   </a>
 
@@ -37,27 +31,25 @@
     <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
     <ul class="item" class:visible={!isCords}>
       <li
-        class:active={currentRoute === 'HOME'}
-        on:mouseover={() => setMouseOver('HOME')}
+        class:active={currentRoute === 'home'}
+        on:mouseover={() => setMouseOver('home')}
         on:mouseout={() => setMouseOut()}
       >
         <a href="#home">Home</a>
       </li>
 
       <li
-        class:active={currentRoute === 'INSPIRATION'}
-        on:mouseover={() => setMouseOver('INSPIRATION')}
+        class:active={currentRoute === 'inspiration'}
+        on:mouseover={() => setMouseOver('inspiration')}
         on:mouseout={() => setMouseOut()}
       >
-        <a href="#inspiration" on:click={() => setInspirationActive(true)}
-          >Inspiration</a
-        >
+        <a href="/#inspiration">Inspiration</a>
       </li>
 
       <li
-        on:mouseover={() => setMouseOver('CONTACT')}
+        on:mouseover={() => setMouseOver('contact')}
         on:mouseout={() => setMouseOut()}
-        class:active={currentRoute === 'CONTACT'}
+        class:active={currentRoute === 'contact'}
         on:click={() => (isContactOpen = !isContactOpen)}
       >
         {#if isContactOpen}
