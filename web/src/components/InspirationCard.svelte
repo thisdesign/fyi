@@ -1,23 +1,28 @@
 <script lang="ts">
   import { buildImage } from '../lib/ResponsiveImage'
+  import Error from '../routes/_error.svelte'
   import type { InspirationSchema } from '../types'
+  import App from './App.svelte'
   import BlockContent from './BlockContent.svelte'
   import PlayButton from './PlayButton.svelte'
+  import Video from './Video.svelte'
 
   export let data: InspirationSchema
-  let { image, title, href, text, category, vimeoUrl } = data
+  let { image, title, href, text, category, video } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null
+
+  let img = { ...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } }) }
 </script>
 
 <div>
   <article>
     <div class="contentWrap">
-      <PlayButton />
-      <img
-        {...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } })}
-        alt={title}
-      />
+      {#if video}
+        <Video src={video} poster={img.src} />
+      {:else}
+        <img {...img} alt={title} />
+      {/if}
     </div>
     <div class="titleArea">
       <h3>
@@ -67,20 +72,10 @@
       display: block;
       width: 100%;
       margin-bottom: $spacer-3;
-      filter: brightness(0.96);
     }
   }
 
   .contentWrap {
-    position: relative;
-
-    :global(svg) {
-      height: $spacer-3;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 10;
-      transform: translate3d(-50%, -50%, 0);
-    }
+    margin-bottom: $spacer-3;
   }
 </style>

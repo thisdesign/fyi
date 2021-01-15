@@ -32,6 +32,6 @@ export type InspirationSchema = {
   image?: SanityImage
   text?: SanityBlockContent
   title?: string
-  vimeoUrl?: string
+  video?: string
   href?: string
 }

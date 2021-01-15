@@ -11,7 +11,8 @@ export const siteQuery = `
               title,
               slug
             },
-            href
+            href,
+            'video': video.asset -> url
           },
           "general":{
             ...general,

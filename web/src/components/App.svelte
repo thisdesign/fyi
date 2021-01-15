@@ -79,13 +79,10 @@
   <div class="space" />
   <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
 </div>
-<Inspiration items={data.inspiration || []} />
+<Inspiration items={data.inspiration || []} forceOpen />
 <video src={videoSrc} autoplay loop muted />
 
 <style type="text/scss">
-  // @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
-
   video {
     position: fixed;
     top: 0;
