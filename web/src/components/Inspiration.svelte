@@ -42,7 +42,7 @@
         duration: 0.8,
         delay: 0.2,
         ease: 'Power3.easeInOut',
-        borderRadius: isOpen ? 0 : 32,
+        borderRadius: isOpen ? 0 : '2vw',
       })
     }
   }
@@ -98,7 +98,7 @@
     box-shadow: 0 0 64px rgba(0, 0, 0, 0.16);
 
     &:not(.standAlone) {
-      z-index: 100;
+      z-index: 10;
       transform: translateY(100vh);
     }
   }

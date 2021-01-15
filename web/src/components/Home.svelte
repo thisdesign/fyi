@@ -94,7 +94,7 @@
 
   video {
     width: 100%;
-    border-radius: $spacer-3;
+    border-radius: $size-corner-radius;
   }
 
   .inspoTrigger {

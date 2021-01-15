@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setInspirationActive } from '../stores/globalState'
+  import { globalState, setInspirationActive } from '../stores/globalState'
   import type { NavRoute } from '../types'
 
   import Logo from './Logo.svelte'
@@ -24,10 +24,12 @@
   const setMouseOut = () => {
     currentRoute = prevRoute
   }
+
+  $: showLogo = !$globalState.isInspirationActive
 </script>
 
 <nav class:isDark>
-  <a href="/">
+  <a href="/" class:hidden={!showLogo} class="logo">
     <Logo />
   </a>
 
@@ -90,6 +92,12 @@
 
     transition: 200ms color ease;
 
+    pointer-events: none;
+
+    > * {
+      pointer-events: all;
+    }
+
     :global(*) {
       fill: white;
       transition: 200ms fill ease;
@@ -101,6 +109,14 @@
       :global(*) {
         fill: black;
       }
+    }
+  }
+
+  .logo {
+    transition: 200ms opacity ease;
+
+    &.hidden {
+      opacity: 0;
     }
   }
 

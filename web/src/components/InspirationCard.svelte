@@ -63,7 +63,7 @@
     }
 
     img {
-      border-radius: $spacer-3;
+      border-radius: $size-corner-radius;
       display: block;
       width: 100%;
       margin-bottom: $spacer-3;
