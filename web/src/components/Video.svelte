@@ -32,6 +32,7 @@
   video {
     width: 100%;
     cursor: pointer;
+    display: block;
   }
 
   .video {

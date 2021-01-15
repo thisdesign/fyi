@@ -68,7 +68,6 @@
     }
 
     img {
-      border-radius: $size-corner-radius;
       display: block;
       width: 100%;
       margin-bottom: $spacer-3;
@@ -76,6 +75,8 @@
   }
 
   .contentWrap {
+    border-radius: $size-corner-radius;
     margin-bottom: $spacer-3;
+    overflow: hidden;
   }
 </style>
