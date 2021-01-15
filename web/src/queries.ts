@@ -20,7 +20,7 @@ export const siteQuery = `
           },
           "home":{
             ...home,
-            "video": general.backgroundVideo.asset->url
+            "video": home.video.asset->url
           }
         }
       `

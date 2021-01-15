@@ -7,6 +7,7 @@
 
   import { onMount } from 'svelte'
   import { globalState } from '../stores/globalState'
+  import Video from './Video.svelte'
 
   gsap.registerPlugin(ScrollTrigger)
 
@@ -57,7 +58,7 @@
       <div class="paragraph">
         <BlockContent blocks={body} />
       </div>
-      {#if videoUrl}<video src={videoUrl} muted autoplay />{/if}
+      {#if videoUrl}<Video src={videoUrl} poster={undefined} />{/if}
     </div>
     <span class="inspoTrigger" />
   </div>
@@ -92,7 +93,7 @@
     margin-bottom: $size-margin;
   }
 
-  video {
+  :global(video) {
     width: 100%;
     border-radius: $size-corner-radius;
   }
