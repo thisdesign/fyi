@@ -9,7 +9,6 @@
   import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
-  import VimeoPlayer from './VimeoPlayer.svelte'
 
   export let data: Site
 
