@@ -1,36 +1,25 @@
 <script lang="ts">
+  import gsap from 'gsap'
+  import { SplitText } from 'gsap/SplitText'
+
   import { onMount } from 'svelte'
 
+  let el: HTMLElement
   export let text: string
-  export let speed = 1200
-
-  let isMounted = false
-
-  let chars = text.split('')
 
   onMount(() => {
-    isMounted = true
+    let split = new SplitText(el, { type: 'words' })
+
+    gsap.from(split.words, {
+      duration: 0.5,
+      y: 10,
+      opacity: 0,
+      stagger: 0.025,
+      ease: 'Power4.out',
+      onComplete: () => split.revert(),
+    }),
+      '+=0'
   })
-
-  function typeIn(node: Element, data: any) {
-    const el: HTMLElement = (node as unknown) as HTMLElement
-
-    return {
-      duration: 0,
-      delay: (speed / chars.length) * data.i,
-      tick: (i: number) => {
-        el.style.opacity = i.toString()
-      },
-    }
-  }
 </script>
 
-{#if isMounted}
-  {#each chars as char, i}<span in:typeIn={{ i }}>{char}</span>{/each}
-{/if}
-
-<style type="text/scss">
-  span {
-    opacity: 0;
-  }
-</style>
+<div bind:this={el}>{text}</div>

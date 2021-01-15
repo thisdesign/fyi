@@ -12,7 +12,7 @@
     tl.to(window, {
       duration: 1,
       scrollTo: window.innerHeight * 0.1,
-      delay: 1,
+      delay: 1.5,
       ease: 'Power3.easeInOut',
     })
   })
