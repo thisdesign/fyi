@@ -78,6 +78,11 @@
     :global(p) {
       margin-bottom: 1rem;
     }
+
+    :global(video) {
+      width: 100%;
+      border-radius: $size-corner-radius;
+    }
   }
 
   .h1 {
@@ -91,11 +96,6 @@
     }
 
     margin-bottom: $size-margin;
-  }
-
-  :global(video) {
-    width: 100%;
-    border-radius: $size-corner-radius;
   }
 
   .inspoTrigger {
