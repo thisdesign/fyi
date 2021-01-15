@@ -16,7 +16,7 @@
     "@sanity/image-url": "^0.140.19",
     "body-scroll-lock": "^3.1.5",
     "compression": "^1.7.1",
-    "gsap": "npm:@gsap/shockingly@^3.6.0",
+    "gsap": "file:gsap-bonus.tgz",
     "polka": "next",
     "shopify-buy": "^2.11.0",
     "sirv": "^1.0.0"
