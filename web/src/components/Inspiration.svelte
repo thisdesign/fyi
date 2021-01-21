@@ -86,7 +86,7 @@
   @import '../style/breakpoints.scss';
 
   .wrapper {
-    padding: $size-margin-lg $size-margin;
+    padding: calc(#{$size-margin-lg} * 1.5) $size-margin $size-margin-lg;
     background: white;
     position: fixed;
     top: 0;
