@@ -43,7 +43,11 @@
 
   let isBelowHome = false
 
+  let mobileHeight = 0
+
   onMount(() => {
+    mobileHeight = window.innerHeight
+
     gsap.to('.space', {
       scrollTrigger: {
         trigger: '.space',
@@ -84,15 +88,22 @@
   pageUrl="/"
 />
 
-<div class="foreground">
-  <Preload {heading} {body} />
-  <div class="space" />
-  <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+<div class="scroll" style={`height: ${mobileHeight}`}>
+  <div class="foreground">
+    <Preload {heading} {body} />
+    <div class="space" />
+    <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+  </div>
+  <Inspiration items={data.inspiration || []} />
+  <video src={videoSrc} autoplay loop muted />
 </div>
-<Inspiration items={data.inspiration || []} />
-<video src={videoSrc} autoplay loop muted />
 
 <style type="text/scss">
+  .scroll {
+    overflow: hidden;
+    height: 100vh;
+    overflow: scroll;
+  }
   video {
     position: fixed;
     top: 0;
