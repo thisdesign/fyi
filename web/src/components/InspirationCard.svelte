@@ -27,14 +27,21 @@
     <div class="titleArea">
       <h3>
         {title}
-        {#if categoryTitle && categorySlug}
-          <a href={`/inspiration/${categorySlug}`}>: {categoryTitle}</a>
-        {/if}
       </h3>
 
-      {#if href}
-        <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
-      {/if}
+      <div class="data">
+        {#if categoryTitle && categorySlug}
+          <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a>
+        {/if}
+
+        {#if categoryTitle && categorySlug && href}
+          <span>•</span>
+        {/if}
+
+        {#if href}
+          <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
+        {/if}
+      </div>
     </div>
 
     <div class="p">
@@ -45,7 +52,7 @@
 
 <style type="text/scss">
   @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
+  @import '../style/breakpoints.scss';
 
   .p {
     opacity: 0.5;
@@ -53,8 +60,11 @@
 
   article {
     .titleArea {
-      display: flex;
-      justify-content: space-between;
+      @include media('>=sm') {
+        display: flex;
+        justify-content: space-between;
+      }
+
       margin-bottom: $spacer-1;
 
       h3 {
@@ -71,6 +81,15 @@
       display: block;
       width: 100%;
       margin-bottom: $spacer-3;
+    }
+  }
+
+  .data {
+    display: flex;
+
+    span {
+      padding: 0 8px;
+      opacity: 0.5;
     }
   }
 
