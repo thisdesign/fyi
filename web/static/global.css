@@ -64,7 +64,7 @@ table {
 
 :root {
   --size-margin: 16px;
-  --size-margin-lg: 32px; }
+  --size-margin-lg: 64px; }
   @media (min-width: 768px) {
     :root {
       --size-margin: 32px;

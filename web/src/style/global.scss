@@ -19,7 +19,7 @@
 
 :root {
   --size-margin: #{$spacer-2};
-  --size-margin-lg: #{$spacer-3};
+  --size-margin-lg: #{$spacer-4};
 
   @include media('>=sm') {
     --size-margin: #{$spacer-3};

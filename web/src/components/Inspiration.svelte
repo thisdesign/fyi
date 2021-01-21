@@ -28,7 +28,9 @@
   // gets Y val for inspo card
   $: getInspoY = () => {
     if (isOpen) return 0
-    return $globalState.isInspirationPeeking ? windowHeight - 64 : windowHeight
+    return $globalState.isInspirationPeeking
+      ? windowHeight - 64 * 0.9
+      : windowHeight
   }
 
   /**
@@ -130,7 +132,7 @@
     cursor: pointer;
 
     width: 100%;
-    height: 75px;
+    height: 64px;
 
     justify-content: center;
     align-items: center;

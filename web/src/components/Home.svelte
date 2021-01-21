@@ -68,7 +68,7 @@
 
   .home {
     background: white;
-    padding: $size-margin-lg $size-margin;
+    padding: $size-margin-lg $size-margin calc(#{$size-margin-lg} * 2);
     transform: scale(0.9);
     transform-origin: top;
     border-radius: $size-corner-radius $size-corner-radius 0 0;
