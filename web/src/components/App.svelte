@@ -50,6 +50,7 @@
 
     gsap.to('.space', {
       scrollTrigger: {
+        scroller: '.scroll',
         trigger: '.space',
         toggleActions: 'play reverse play reverse',
         start: 'top top',
@@ -100,10 +101,10 @@
 
 <style type="text/scss">
   .scroll {
-    overflow: hidden;
     height: 100vh;
     overflow: scroll;
   }
+
   video {
     position: fixed;
     top: 0;
