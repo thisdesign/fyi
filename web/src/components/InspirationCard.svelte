@@ -26,7 +26,6 @@
       y: '+=50',
       scrollTrigger: {
         trigger: parallaxItem,
-        markers: true,
         start: 'top center',
         end: 'bottom top',
         scrub: true,
