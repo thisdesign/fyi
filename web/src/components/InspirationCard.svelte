@@ -1,13 +1,11 @@
 <script lang="ts">
   import { buildImage } from '../lib/ResponsiveImage'
-  import Error from '../routes/_error.svelte'
   import type { InspirationSchema } from '../types'
-  import App from './App.svelte'
   import BlockContent from './BlockContent.svelte'
-  import PlayButton from './PlayButton.svelte'
   import Video from './Video.svelte'
 
   export let data: InspirationSchema
+
   let { image, title, href, text, category, video } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null

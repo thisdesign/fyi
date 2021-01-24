@@ -1,17 +1,11 @@
 <script lang="ts">
-  import { globalState } from '../stores/globalState'
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
 
   export let items: InspirationSchema[]
-  export let standAlone: boolean = false
-  export let forceOpen: boolean = false
-
-  let wrapper: HTMLElement
-  $: isOpen = forceOpen || $globalState.hash === 'inspiration'
 </script>
 
-<div class="wrapper" bind:this={wrapper} class:standAlone>
+<div class="wrapper">
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>
@@ -38,17 +32,9 @@
     display: flex;
     transition: 1200ms opacity ease;
 
-    .standAlone & {
-      display: none;
-    }
-
     &.hidden {
       opacity: 0;
     }
-  }
-
-  .title {
-    padding: $spacer-2 + $spacer-2;
   }
 
   .nudge {
