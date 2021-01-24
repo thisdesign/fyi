@@ -16,6 +16,7 @@
   import Inspiration from '../../components/Inspiration.svelte'
   import Nav from '../../components/Nav.svelte'
   import { siteQuery } from '../../queries'
+  import RouteFade from '../../components/RouteFade.svelte'
 
   export let site: Site
   export let category: string
@@ -32,9 +33,9 @@
 
 <Nav sticky />
 
-<div>
+<RouteFade>
   Now showing: {categoryName} <a href="/inspiration">(&times;)</a>
   {#if site.inspiration}
     <Inspiration items={itemsToDisplay} />
   {/if}
-</div>
+</RouteFade>

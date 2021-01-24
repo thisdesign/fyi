@@ -1,8 +1,21 @@
 <script lang="ts">
+  import gsap from 'gsap'
+
+  import { onMount } from 'svelte'
+
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
 
   export let items: InspirationSchema[]
+
+  onMount(() => {
+    gsap.to('.grid', {
+      ease: 'power3.in',
+      opacity: 1,
+      delay: 0.5,
+      stagger: 0.1,
+    })
+  })
 </script>
 
 <div class="wrapper">
@@ -48,6 +61,8 @@
   }
 
   .grid {
+    opacity: 0;
+
     @include media('>=sm') {
       display: grid;
       grid-template-columns: repeat(6, 1fr);

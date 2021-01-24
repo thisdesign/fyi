@@ -13,12 +13,15 @@
   export let site: Site
   import Inspiration from '../../components/Inspiration.svelte'
   import Nav from '../../components/Nav.svelte'
+  import RouteFade from '../../components/RouteFade.svelte'
 
   let items = site.inspiration || []
 </script>
 
-<Nav sticky />
-<Inspiration {items} />
+<RouteFade>
+  <Nav sticky />
+  <Inspiration {items} />
+</RouteFade>
 
 <style type="text/scss">
   // @import '../style/vars.scss';
