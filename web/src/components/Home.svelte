@@ -31,9 +31,7 @@
         onLeaveBack: () => history.pushState({}, '', ''),
       },
     })
-  })
 
-  onMount(() => {
     gsap.to('.inspoTrigger', {
       scrollTrigger: {
         trigger: '.inspoTrigger',

@@ -1,4 +1,9 @@
 <script lang="ts">
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  import { onMount } from 'svelte'
+
   import { buildImage } from '../lib/ResponsiveImage'
   import type { InspirationSchema } from '../types'
   import BlockContent from './BlockContent.svelte'
@@ -11,16 +16,38 @@
   let categoryTitle = category?.title || null
 
   let img = { ...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } }) }
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  let parallaxItem: HTMLElement
+
+  onMount(() => {
+    gsap.to(parallaxItem, {
+      y: '+=50',
+      scrollTrigger: {
+        trigger: parallaxItem,
+        markers: true,
+        start: 'top center',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
 </script>
 
-<div>
+<div class="inspoWrap">
   <article>
     <div class="contentWrap">
-      {#if video}
-        <Video src={video} poster={img.src} />
-      {:else}
-        <img {...img} alt={title} />
-      {/if}
+      <div
+        bind:this={parallaxItem}
+        style="transform: scale(1.3) translateY(-25px);"
+      >
+        {#if video}
+          <Video src={video} poster={img.src} />
+        {:else}
+          <img {...img} alt={title} />
+        {/if}
+      </div>
     </div>
     <div class="titleArea">
       <h3>

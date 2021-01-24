@@ -1,6 +1,6 @@
 <script lang="ts">
   import gsap from 'gsap'
-  import { onDestroy, onMount } from 'svelte'
+  import { onMount } from 'svelte'
   import { globalState } from '../stores/globalState'
 
   import type { NavRoute, Site } from '../types'
