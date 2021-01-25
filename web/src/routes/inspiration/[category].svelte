@@ -31,11 +31,8 @@
   $: categoryName = filteredItems[0].category?.title || null
 </script>
 
-<Nav sticky />
-
 <RouteFade>
-  Now showing: {categoryName} <a href="/inspiration">(&times;)</a>
   {#if site.inspiration}
-    <Inspiration items={itemsToDisplay} />
+    <Inspiration items={itemsToDisplay} category={categoryName} />
   {/if}
 </RouteFade>

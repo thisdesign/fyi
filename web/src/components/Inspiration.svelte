@@ -7,6 +7,7 @@
   import InspirationCard from './InspirationCard.svelte'
 
   export let items: InspirationSchema[]
+  export let category: string | null = null
 
   onMount(() => {
     gsap.to('.grid', {
@@ -19,6 +20,11 @@
 </script>
 
 <div class="wrapper">
+  {#if category}
+    <h1 class="h1">
+      {category} <a href="/inspiration">&times;</a>
+    </h1>
+  {/if}
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>
@@ -32,9 +38,17 @@
   @import '../style/vars.scss';
   @import '../style/breakpoints.scss';
 
+  h1 {
+    margin-bottom: $size-margin;
+    a {
+      opacity: 0.25;
+    }
+  }
+
   .wrapper {
-    padding: 0 $size-margin $size-margin-lg;
+    padding: $size-margin;
     background: white;
+    margin-top: 80px;
   }
 
   .nudge,

@@ -19,7 +19,6 @@
 </script>
 
 <RouteFade>
-  <Nav sticky />
   <Inspiration {items} />
 </RouteFade>
 

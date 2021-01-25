@@ -35,7 +35,7 @@
         on:mouseover={() => setMouseOver('home')}
         on:mouseout={() => setMouseOut()}
       >
-        <a href="#home">Home</a>
+        <a href="/">Home</a>
       </li>
 
       <li
@@ -151,11 +151,7 @@
 
         transition: 500ms width ease-in-out;
 
-        border-bottom: 1px solid white;
-
-        .isDark & {
-          border-bottom: 1px solid black;
-        }
+        border-bottom: 1px solid black;
       }
     }
   }
