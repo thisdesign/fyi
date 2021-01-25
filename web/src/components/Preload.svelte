@@ -1,34 +1,60 @@
 <script lang="ts">
-  import Type from './Type.svelte'
+  import { SplitText } from 'gsap/SplitText'
   import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
   import gsap from 'gsap'
   import { onMount } from 'svelte'
 
   gsap.registerPlugin(ScrollToPlugin)
-
-  onMount(() => {
-    const tl = gsap.timeline()
-    tl.to('.scroll', { duration: 0, scrollTo: 0 })
-    tl.to('.scroll', {
-      duration: 1,
-      scrollTo: window.innerHeight * 0.1,
-      delay: 1.5,
-      ease: 'Power3.easeInOut',
-    })
-  })
+  gsap.registerPlugin(SplitText)
 
   export let heading: string | null
   export let body: string | null
+
+  //nodes
+  let splitText: HTMLElement
   let node: HTMLElement
+
+  onMount(() => {
+    const tl = gsap.timeline()
+    let split = new SplitText(splitText, { type: 'words' })
+
+    tl.to('.scroll', { duration: 0, scrollTo: 0 })
+
+    tl.from(split.words, {
+      delay: 0.2,
+      duration: 0.5,
+      y: 15,
+      opacity: 0,
+      stagger: 0.02,
+      ease: 'Power4.out',
+      onComplete: () => split.revert(),
+    })
+
+    tl.from(
+      '.paragraph',
+      {
+        opacity: 0,
+        y: 32,
+      },
+      '=-0.5'
+    )
+
+    tl.to('.scroll', {
+      duration: 1,
+      scrollTo: window.innerHeight * 0.1,
+      // delay: 1,
+      ease: 'Power4.easeOut',
+    })
+  })
 </script>
 
 <div class="preload" bind:this={node}>
   <div class="container">
-    <h2 class="h1">
-      <Type text={heading || ''} />
+    <h2 class="h1" bind:this={splitText}>
+      {heading}
     </h2>
-    <p class="p">
-      <Type text={body || ''} />
+    <p class="p paragraph">
+      {body}
     </p>
   </div>
 </div>

@@ -11,15 +11,6 @@
 
   export let data: Site
 
-  const handleHashChange = () => {
-    $globalState.hash = window.location.hash.replace('#', '')
-  }
-
-  onMount(() => {
-    handleHashChange()
-    window.addEventListener('hashchange', handleHashChange, false)
-  })
-
   $: heading = data.preload?.preloadHead || null
   $: body = data.preload?.preloadBody || null
 
@@ -63,18 +54,9 @@
       },
     })
   })
-
-  let navRoute: NavRoute
-
-  $: {
-    if ($globalState.isInspirationActive) navRoute = 'INSPIRATION'
-    else if (isBelowHome) navRoute = 'HOME'
-    else if ($globalState.isNavCords) navRoute = 'INTRO'
-    else navRoute = 'NONE'
-  }
 </script>
 
-<Nav {lat} {lng} />
+<Nav {lat} {lng} pageRoute="home" />
 <Seo
   pageTitle={null}
   {baseTitle}
