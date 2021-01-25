@@ -8,8 +8,6 @@
   import { onMount } from 'svelte'
   import Video from './Video.svelte'
   import { buildImage } from '../lib/ResponsiveImage'
-  import App from './App.svelte'
-  import InspirationCard from './InspirationCard.svelte'
 
   gsap.registerPlugin(ScrollTrigger)
 

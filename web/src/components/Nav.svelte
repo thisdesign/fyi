@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import Logo from './Logo.svelte'
+  import Cords from './Cords.svelte'
 
   export let lat = 0
   export let lng = 0
   export let sticky: boolean = false
-  export let isCords: boolean = false
+  export let isCords: boolean = true
   export let pageRoute: 'inspiration' | 'home'
 
   let isContactOpen = true
@@ -27,7 +28,9 @@
   </a>
 
   <div class="items">
-    <div class="item" class:visible={isCords}>{lat}°N, {lng}°W</div>
+    <div class="item" class:visible={isCords}>
+      <Cords {lat} {lng} onComplete={() => (isCords = false)} />
+    </div>
     <ul class="item" class:visible={!isCords}>
       <li
         class:active={currentRoute === 'home'}
