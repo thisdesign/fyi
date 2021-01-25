@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { globalState } from '../stores/globalState'
-
+  import { onMount } from 'svelte'
   import Logo from './Logo.svelte'
 
   export let lat = 0
   export let lng = 0
   export let sticky: boolean = false
+  export let isCords: boolean = false
+  export let pageRoute: 'inspiration' | 'home'
 
   let isContactOpen = true
   let hoveredRoute: string | null = null
@@ -17,13 +18,11 @@
     hoveredRoute = null
   }
 
-  $: hash = $globalState.hash
-  $: isCords = $globalState.hash = ''
-  $: currentRoute = hoveredRoute || hash
+  $: currentRoute = hoveredRoute || pageRoute
 </script>
 
 <nav class:sticky>
-  <a href="/" class:hidden={hash === 'inspiration'} class="logo">
+  <a href="/" class="logo">
     <Logo />
   </a>
 
@@ -101,10 +100,6 @@
 
   .logo {
     transition: 200ms opacity ease;
-
-    &.hidden {
-      opacity: 0;
-    }
   }
 
   .items {

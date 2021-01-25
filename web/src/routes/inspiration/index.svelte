@@ -18,6 +18,7 @@
   let items = site.inspiration || []
 </script>
 
+<Nav pageRoute="inspiration" />
 <RouteFade>
   <Inspiration {items} />
 </RouteFade>

@@ -11,12 +11,9 @@
 <script lang="ts">
   import App from '../components/App.svelte'
   import { siteQuery } from '../queries'
+  import Nav from '../components/Nav.svelte'
   export let site: Site
 </script>
 
-<style type="text/scss">
-  // @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
-</style>
-
+<Nav pageRoute="home" />
 <App data={site} />
