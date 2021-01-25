@@ -43,7 +43,7 @@
         on:mouseover={() => setMouseOver('inspiration')}
         on:mouseout={() => setMouseOut()}
       >
-        <a href="/#inspiration">Inspiration</a>
+        <a href="/inspiration">Inspiration</a>
       </li>
 
       <li
