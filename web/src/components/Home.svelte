@@ -6,7 +6,6 @@
   import type { SanityBlockContent } from '../types'
 
   import { onMount } from 'svelte'
-  import { globalState } from '../stores/globalState'
   import Video from './Video.svelte'
 
   gsap.registerPlugin(ScrollTrigger)
@@ -14,9 +13,6 @@
   export let intro: SanityBlockContent | null
   export let body: SanityBlockContent | null
   export let videoUrl: string | null
-
-  const setPeek = (cond: boolean) =>
-    globalState.update((state) => ({ ...state, isInspirationPeeking: cond }))
 
   onMount(() => {
     gsap.to('.home', {
@@ -28,8 +24,6 @@
         start: 'top bottom',
         end: 'top top',
         scrub: true,
-        onEnter: () => history.pushState({}, '', '#home'),
-        onLeaveBack: () => history.pushState({}, '', ''),
       },
     })
 
@@ -39,8 +33,6 @@
         trigger: '.inspoTrigger',
         toggleActions: 'play reverse play reverse',
         start: 'top bottom',
-        onEnter: () => setPeek(true),
-        onLeaveBack: () => setPeek(false),
       },
     })
   })
