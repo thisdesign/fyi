@@ -27,6 +27,9 @@
   $: seoImg = data.seo?.metaImage || null
   $: seoDesc = data.seo?.description || null
 
+  $: placeholderImg = data.home?.homeImage || null
+  $: isTwoCol = data.home?.twoCol || false
+
   let isBelowHome = false
 
   let mobileHeight = 0
@@ -70,7 +73,13 @@
   <div class="foreground">
     <Preload {heading} {body} />
     <div class="space" />
-    <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+    <Home
+      intro={homeIntro}
+      body={homeBody}
+      videoUrl={homeVideoUrl}
+      {placeholderImg}
+      {isTwoCol}
+    />
   </div>
   <video src={videoSrc} autoplay loop muted />
 </div>
