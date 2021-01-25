@@ -126,8 +126,25 @@ export default {
           description: "Homepage paragraph text",
         },
         {
+          name: "twoCol",
+          type: "boolean",
+          title: "Display text in two columns?",
+        },
+        {
           type: "file",
           name: "video",
+          title: "Featured video",
+          description:
+            "If no video is provided, the video will default to the placeholder photo",
+        },
+        {
+          name: "homeImage",
+          type: "image",
+          description:
+            "Serves as placeholder for video when paused. Will replace video if no video file is provided above.",
+          options: {
+            hotspot: true,
+          },
         },
       ],
     },
