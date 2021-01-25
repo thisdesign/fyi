@@ -90,11 +90,9 @@
     <div class="space" />
     <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
   </div>
-  <Inspiration items={data.inspiration || []} />
   <video src={videoSrc} autoplay loop muted />
 </div>
 <video src={videoSrc} autoplay loop muted />
-
 
 <style type="text/scss">
   .scroll {
