@@ -1,28 +1,52 @@
 <script lang="ts">
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  import { onMount } from 'svelte'
+
   import { buildImage } from '../lib/ResponsiveImage'
-  import Error from '../routes/_error.svelte'
   import type { InspirationSchema } from '../types'
-  import App from './App.svelte'
   import BlockContent from './BlockContent.svelte'
-  import PlayButton from './PlayButton.svelte'
   import Video from './Video.svelte'
 
   export let data: InspirationSchema
+
   let { image, title, href, text, category, video } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null
 
   let img = { ...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } }) }
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  let parallaxItem: HTMLElement
+
+  onMount(() => {
+    gsap.to(parallaxItem, {
+      y: '+=50',
+      scrollTrigger: {
+        trigger: parallaxItem,
+        start: 'top center',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
 </script>
 
-<div>
+<div class="inspoWrap">
   <article>
     <div class="contentWrap">
-      {#if video}
-        <Video src={video} poster={img.src} />
-      {:else}
-        <img {...img} alt={title} />
-      {/if}
+      <div
+        bind:this={parallaxItem}
+        style="transform: scale(1.1) translateY(-25px);"
+      >
+        {#if video}
+          <Video src={video} poster={img.src} />
+        {:else}
+          <img {...img} alt={title} />
+        {/if}
+      </div>
     </div>
     <div class="titleArea">
       <h3>

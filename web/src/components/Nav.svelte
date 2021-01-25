@@ -5,6 +5,7 @@
 
   export let lat = 0
   export let lng = 0
+  export let sticky: boolean = false
 
   let isContactOpen = true
   let hoveredRoute: string | null = null
@@ -19,10 +20,9 @@
   $: hash = $globalState.hash
   $: isCords = $globalState.hash = ''
   $: currentRoute = hoveredRoute || hash
-  $: isDark = true
 </script>
 
-<nav class:isDark>
+<nav class:sticky>
   <a href="/" class:hidden={hash === 'inspiration'} class="logo">
     <Logo />
   </a>
@@ -35,7 +35,7 @@
         on:mouseover={() => setMouseOver('home')}
         on:mouseout={() => setMouseOut()}
       >
-        <a href="#home">Home</a>
+        <a href="/">Home</a>
       </li>
 
       <li
@@ -43,7 +43,7 @@
         on:mouseover={() => setMouseOver('inspiration')}
         on:mouseout={() => setMouseOut()}
       >
-        <a href="/#inspiration">Inspiration</a>
+        <a href="/inspiration">Inspiration</a>
       </li>
 
       <li
@@ -64,7 +64,6 @@
 
 <style type="text/scss">
   @import '../style/vars.scss';
-  // @import '../style/breakpoints.scss';
 
   nav {
     display: flex;
@@ -80,7 +79,7 @@
     width: 100%;
 
     z-index: 90;
-    color: white;
+    color: black;
 
     transition: 200ms color ease;
 
@@ -91,16 +90,12 @@
     }
 
     :global(*) {
-      fill: white;
+      fill: black;
       transition: 200ms fill ease;
     }
 
-    &.isDark {
-      color: black;
-
-      :global(*) {
-        fill: black;
-      }
+    &.sticky {
+      position: sticky;
     }
   }
 
@@ -156,11 +151,7 @@
 
         transition: 500ms width ease-in-out;
 
-        border-bottom: 1px solid white;
-
-        .isDark & {
-          border-bottom: 1px solid black;
-        }
+        border-bottom: 1px solid black;
       }
     }
   }

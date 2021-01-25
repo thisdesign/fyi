@@ -1,77 +1,30 @@
 <script lang="ts">
   import gsap from 'gsap'
-  import { onMount } from 'svelte'
 
-  import { globalState } from '../stores/globalState'
-  import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock'
+  import { onMount } from 'svelte'
 
   import type { InspirationSchema } from '../types'
   import InspirationCard from './InspirationCard.svelte'
 
   export let items: InspirationSchema[]
-  export let standAlone: boolean = false
-  export let forceOpen: boolean = false
-
-  let wrapper: HTMLElement
-  let windowHeight = 0
-  $: isOpen = forceOpen || $globalState.hash === 'inspiration'
+  export let category: string | null = null
 
   onMount(() => {
-    setWindowHeight()
+    gsap.to('.grid', {
+      ease: 'power3.in',
+      opacity: 1,
+      delay: 0.5,
+      stagger: 0.1,
+    })
   })
-
-  /**
-   * Fns
-   */
-  const setWindowHeight = () => (windowHeight = window.innerHeight)
-
-  // gets Y val for inspo card
-  $: getInspoY = () => {
-    if (isOpen) return 0
-    return $globalState.isInspirationPeeking
-      ? windowHeight - 64 * 0.9
-      : windowHeight
-  }
-
-  /**
-   * Animation
-   */
-  $: {
-    if (typeof window !== 'undefined' && !standAlone) {
-      gsap.to(wrapper, {
-        y: getInspoY(),
-        scale: isOpen ? 1 : 0.9,
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'Power3.easeInOut',
-        borderRadius: isOpen ? 0 : '2vw',
-      })
-    }
-  }
-
-  /**
-   * Body scroll
-   */
-
-  $: {
-    if (isOpen) {
-      disableBodyScroll(wrapper)
-    } else {
-      clearAllBodyScrollLocks()
-    }
-  }
 </script>
 
-<svelte:window on:resize={setWindowHeight} />
-
-<div class="wrapper" bind:this={wrapper} class:standAlone>
-  <div class="nudge" class:hidden={isOpen}>
-    <a href="/#inspiration">View Inspiration</a>
-  </div>
-  <div class="title" class:hidden={!isOpen}>
-    <a href="/#home">&times;&nbsp;</a>
-    Inspiration
-  </div>
+<div class="wrapper">
+  {#if category}
+    <h1 class="h1">
+      {category} <a href="/inspiration">&times;</a>
+    </h1>
+  {/if}
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>
@@ -85,22 +38,17 @@
   @import '../style/vars.scss';
   @import '../style/breakpoints.scss';
 
-  .wrapper {
-    padding: calc(#{$size-margin-lg} * 1.5) $size-margin $size-margin-lg;
-    background: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transform-origin: top;
-    height: 100vh;
-    overflow-y: scroll;
-    box-shadow: 0 0 64px rgba(0, 0, 0, 0.16);
-
-    &:not(.standAlone) {
-      z-index: 10;
-      transform: translateY(100vh);
+  h1 {
+    margin-bottom: $size-margin;
+    a {
+      opacity: 0.25;
     }
+  }
+
+  .wrapper {
+    padding: $size-margin;
+    background: white;
+    margin-top: 80px;
   }
 
   .nudge,
@@ -111,20 +59,8 @@
     display: flex;
     transition: 1200ms opacity ease;
 
-    .standAlone & {
-      display: none;
-    }
-
     &.hidden {
       opacity: 0;
-    }
-  }
-
-  .title {
-    padding: $spacer-2 + $spacer-2;
-
-    button {
-      margin-right: $spacer-1;
     }
   }
 
@@ -139,6 +75,8 @@
   }
 
   .grid {
+    opacity: 0;
+
     @include media('>=sm') {
       display: grid;
       grid-template-columns: repeat(6, 1fr);

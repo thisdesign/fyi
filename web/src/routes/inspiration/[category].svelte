@@ -4,7 +4,11 @@
 
   export async function preload(page: any, session: any) {
     const site = await client.fetch(siteQuery)
-    return { site }
+
+    return {
+      site,
+      category: page.params.category,
+    }
   }
 </script>
 
@@ -12,23 +16,23 @@
   import Inspiration from '../../components/Inspiration.svelte'
   import Nav from '../../components/Nav.svelte'
   import { siteQuery } from '../../queries'
+  import RouteFade from '../../components/RouteFade.svelte'
+
   export let site: Site
+  export let category: string
+
+  let categoryName: string | null = null
+  let items = site.inspiration || []
+
+  let filteredItems = items.filter(
+    (item) => item.category?.slug.current === category
+  )
+  let itemsToDisplay = category ? filteredItems : items
+  $: categoryName = filteredItems[0].category?.title || null
 </script>
 
-<style type="text/scss">
-  @import '../../style/vars.scss';
-  // @import '../style/breakpoints.scss';
-
-  // .wrap {
-  //   margin-top: $size-nav;
-  //   padding: $size-margin;
-  //   background: white;
-  // }
-</style>
-
-<Nav />
-<div>
+<RouteFade>
   {#if site.inspiration}
-    <Inspiration items={site.inspiration} standAlone />
+    <Inspiration items={itemsToDisplay} category={categoryName} />
   {/if}
-</div>
+</RouteFade>

@@ -1,20 +1,15 @@
 <script lang="ts">
   import gsap from 'gsap'
-  import { onDestroy, onMount } from 'svelte'
+  import { onMount } from 'svelte'
   import { globalState } from '../stores/globalState'
 
   import type { NavRoute, Site } from '../types'
   import Home from './Home.svelte'
-  import Inspiration from './Inspiration.svelte'
   import Nav from './Nav.svelte'
   import Preload from './Preload.svelte'
   import Seo from './Seo.svelte'
 
   export let data: Site
-
-  let navThemeDark = true
-
-  let hash = ''
 
   const handleHashChange = () => {
     $globalState.hash = window.location.hash.replace('#', '')
@@ -54,17 +49,17 @@
         trigger: '.space',
         toggleActions: 'play reverse play reverse',
         start: 'top top',
-        onEnter: () => (navThemeDark = false),
+        // onEnter: () => (navThemeDark = false),
         onLeave: () => {
-          navThemeDark = true
+          // navThemeDark = true
           isBelowHome = true
         },
 
         onEnterBack: () => {
-          navThemeDark = false
+          // navThemeDark = false
           isBelowHome = false
         },
-        onLeaveBack: () => (navThemeDark = true),
+        // onLeaveBack: () => (navThemeDark = true),
       },
     })
   })
@@ -79,7 +74,7 @@
   }
 </script>
 
-<Nav {lat} {lng} isDark={navThemeDark} route={navRoute} />
+<Nav {lat} {lng} />
 <Seo
   pageTitle={null}
   {baseTitle}
@@ -98,6 +93,8 @@
   <Inspiration items={data.inspiration || []} />
   <video src={videoSrc} autoplay loop muted />
 </div>
+<video src={videoSrc} autoplay loop muted />
+
 
 <style type="text/scss">
   .scroll {

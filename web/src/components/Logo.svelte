@@ -12,6 +12,6 @@
   @import '../style/vars.scss';
   // @import '../style/breakpoints.scss';
   svg {
-    height: 24px;
+    height: 32px;
   }
 </style>
