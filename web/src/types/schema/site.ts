@@ -11,6 +11,8 @@ export type Site = SanityDocument & {
     intro?: SanityBlockContent
     paragraph?: SanityBlockContent
     video?: string
+    twoCol?: boolean
+    homeImage?: SanityImage
   }
   inspiration?: InspirationSchema[]
   preload?: {
