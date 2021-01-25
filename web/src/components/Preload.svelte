@@ -8,8 +8,8 @@
 
   onMount(() => {
     const tl = gsap.timeline()
-    tl.to(window, { duration: 0, scrollTo: 0 })
-    tl.to(window, {
+    tl.to('.scroll', { duration: 0, scrollTo: 0 })
+    tl.to('.scroll', {
       duration: 1,
       scrollTo: window.innerHeight * 0.1,
       delay: 1.5,

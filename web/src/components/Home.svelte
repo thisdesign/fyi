@@ -22,6 +22,7 @@
     gsap.to('.home', {
       scale: 1,
       scrollTrigger: {
+        scroller: '.scroll',
         trigger: '.home-outer',
         toggleActions: 'play reverse play reverse',
         start: 'top bottom',
@@ -34,6 +35,7 @@
 
     gsap.to('.inspoTrigger', {
       scrollTrigger: {
+        scroller: '.scroll',
         trigger: '.inspoTrigger',
         toggleActions: 'play reverse play reverse',
         start: 'top bottom',

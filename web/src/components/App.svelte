@@ -38,9 +38,14 @@
 
   let isBelowHome = false
 
+  let mobileHeight = 0
+
   onMount(() => {
+    mobileHeight = window.innerHeight
+
     gsap.to('.space', {
       scrollTrigger: {
+        scroller: '.scroll',
         trigger: '.space',
         toggleActions: 'play reverse play reverse',
         start: 'top top',
@@ -79,14 +84,24 @@
   pageUrl="/"
 />
 
-<div class="foreground">
-  <Preload {heading} {body} />
-  <div class="space" />
-  <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+<div class="scroll" style={`height: ${mobileHeight}`}>
+  <div class="foreground">
+    <Preload {heading} {body} />
+    <div class="space" />
+    <Home intro={homeIntro} body={homeBody} videoUrl={homeVideoUrl} />
+  </div>
+  <Inspiration items={data.inspiration || []} />
+  <video src={videoSrc} autoplay loop muted />
 </div>
 <video src={videoSrc} autoplay loop muted />
 
+
 <style type="text/scss">
+  .scroll {
+    height: 100vh;
+    overflow: scroll;
+  }
+
   video {
     position: fixed;
     top: 0;
