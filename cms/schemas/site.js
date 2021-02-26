@@ -116,6 +116,11 @@ export default {
 
       fields: [
         {
+          name: "isLarge",
+          description: "is this text large or small",
+          type: "boolean",
+        },
+        {
           ...TEXT,
           name: "intro",
           description: "Homepage large introduction text",
