@@ -57,13 +57,13 @@
           <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a>
         {/if}
 
-        {#if categoryTitle && categorySlug && href}
+        <!-- {#if categoryTitle && categorySlug && href}
           <span>•</span>
         {/if}
 
         {#if href}
           <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
-        {/if}
+        {/if} -->
       </div>
     </div>
 
