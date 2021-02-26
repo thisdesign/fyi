@@ -14,7 +14,6 @@
   let { image, title, href, text, category, video } = data
   let categorySlug = category?.slug?.current || ''
   let categoryTitle = category?.title || null
-
   let img = { ...buildImage(image, { sizes: { xxs: '100vh', sm: '70vw' } }) }
 
   gsap.registerPlugin(ScrollTrigger)
