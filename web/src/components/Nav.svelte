@@ -28,10 +28,10 @@
   </a>
 
   <div class="items">
-    <div class="item" class:visible={isCords}>
-      <Cords {lat} {lng} onComplete={() => (isCords = false)} />
-    </div>
-    <ul class="item" class:visible={!isCords}>
+    <!-- <div class="item" class:visible={isCords}>
+      <Cords {lat} {lng} />
+    </div> -->
+    <ul class="item">
       <li
         class:active={currentRoute === 'home'}
         on:mouseover={() => setMouseOver('home')}
@@ -113,7 +113,6 @@
     align-items: flex-end;
 
     .item {
-      opacity: 0;
       position: absolute;
       right: 0;
       top: 50%;

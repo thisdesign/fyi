@@ -6,12 +6,8 @@
   export let lat: number
   export let lng: number
 
-  export let onComplete: () => any
-
   let latCount = ''
   let lngCount = ''
-
-  let complete = false
 
   onMount(() => {
     const idk = (num: number, onUpdate: (val: string) => any) => {
@@ -29,15 +25,11 @@
           onUpdate(count.val.toString())
         },
       })
-
-      tl.addPause(2.5, () => (complete = true))
     }
 
     idk(lat, (val) => (latCount = val))
     idk(lng, (val) => (lngCount = val))
   })
-
-  $: complete ? onComplete() : {}
 </script>
 
 <div>{latCount}° N, {lngCount}° W</div>
