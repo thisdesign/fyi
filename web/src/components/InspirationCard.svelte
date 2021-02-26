@@ -53,9 +53,10 @@
       </h3>
 
       <div class="data">
-        {#if categoryTitle && categorySlug}
+        {categoryTitle}
+        <!-- {#if categoryTitle && categorySlug}
           <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a>
-        {/if}
+        {/if} -->
 
         <!-- {#if categoryTitle && categorySlug && href}
           <span>•</span>
