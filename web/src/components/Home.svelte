@@ -19,29 +19,6 @@
 
   const img = placeholderImg ? buildImage(placeholderImg) : null
   const poster = img?.src || ''
-
-  onMount(() => {
-    gsap.to('.home', {
-      scale: 1,
-      scrollTrigger: {
-        scroller: '.scroll',
-        trigger: '.home-outer',
-        toggleActions: 'play reverse play reverse',
-        start: 'top bottom',
-        end: 'top top',
-        scrub: true,
-      },
-    })
-
-    gsap.to('.inspoTrigger', {
-      scrollTrigger: {
-        scroller: '.scroll',
-        trigger: '.inspoTrigger',
-        toggleActions: 'play reverse play reverse',
-        start: 'top bottom',
-      },
-    })
-  })
 </script>
 
 <div id="home" />
@@ -59,7 +36,6 @@
         <img {...img} alt="FYi" />
       {/if}
     </div>
-    <span class="inspoTrigger" />
   </div>
 </div>
 
@@ -70,7 +46,6 @@
   .home {
     background: white;
     padding: $size-margin-lg $size-margin $size-margin;
-    transform: scale(0.9);
     transform-origin: top;
     border-radius: $size-corner-radius $size-corner-radius 0 0;
 
