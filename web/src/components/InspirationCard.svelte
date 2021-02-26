@@ -121,8 +121,7 @@
     border-radius: $size-corner-radius;
     margin-bottom: $spacer-3;
     overflow: hidden;
-    border: 1px solid blue;
     display: inline-block;
-    mask-image: -webkit-radial-gradient(white, black);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 </style>
