@@ -36,4 +36,5 @@ export type InspirationSchema = {
   title?: string
   video?: string
   href?: string
+  layout?: number
 }

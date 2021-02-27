@@ -23,7 +23,7 @@
 
   onMount(() => {
     gsap.to(parallaxItem, {
-      y: '+=50',
+      y: '+=66.6',
       scrollTrigger: {
         trigger: parallaxItem,
         start: 'top center',

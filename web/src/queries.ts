@@ -7,6 +7,7 @@ export const siteQuery = `
             text,
             title,
             vimeoUrl,
+            layout,
             "category": category-> { 
               title,
               slug

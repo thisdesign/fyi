@@ -28,7 +28,7 @@
   {/if}
   {#each items as item, i}
     <div class="grid">
-      <div class={`row layout-${i % 4}`}>
+      <div class={`row layout-${item.layout}`}>
         <InspirationCard data={item} {isCategoryLinkShown} />
       </div>
     </div>

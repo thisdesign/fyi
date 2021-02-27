@@ -43,6 +43,20 @@ export default {
     },
 
     {
+      name: "layout",
+      description: (
+        <>
+          Layout. See{" "}
+          <a href="https://www.notion.so/tylermcrobert/736f4e4f650f43cd97adf47b6fd45e76?v=fbb56074dc6846ecb1742464ad6f3a29">
+            guide
+          </a>{" "}
+          for details
+        </>
+      ),
+      type: "number",
+    },
+
+    {
       name: "image",
       description: "Video Placeholder",
       type: "image",
