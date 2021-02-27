@@ -133,7 +133,8 @@ export default {
         {
           name: "twoCol",
           type: "boolean",
-          title: "Display text in two columns?",
+          title: "2 Col",
+          description: "Display paragraph in two columns?",
         },
         {
           type: "file",
@@ -157,6 +158,11 @@ export default {
     /**
      * Inspiration
      */
+
+    {
+      name: "showInspirationCategories",
+      type: "boolean",
+    },
 
     {
       name: "inspiration",

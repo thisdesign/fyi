@@ -8,6 +8,7 @@
 
   export let items: InspirationSchema[]
   export let category: string | null = null
+  export let isCategoryLinkShown: boolean
 
   onMount(() => {
     gsap.to('.grid', {
@@ -28,7 +29,7 @@
   {#each items as item, i}
     <div class="grid">
       <div class={`row layout-${i % 4}`}>
-        <InspirationCard data={item} />
+        <InspirationCard data={item} {isCategoryLinkShown} />
       </div>
     </div>
   {/each}

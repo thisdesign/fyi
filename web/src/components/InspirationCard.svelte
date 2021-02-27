@@ -10,6 +10,7 @@
   import Video from './Video.svelte'
 
   export let data: InspirationSchema
+  export let isCategoryLinkShown: boolean
 
   let { image, title, href, text, category, video } = data
   let categorySlug = category?.slug?.current || ''
@@ -53,15 +54,15 @@
       </h3>
 
       <div class="data">
-        <!--  {categoryTitle}
-       {#if categoryTitle && categorySlug}
-          <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a>
-        {/if} -->
+        {#if isCategoryLinkShown}
+          {#if categoryTitle && categorySlug}
+            <a href={`/inspiration/${categorySlug}`}>{categoryTitle}</a>
+          {/if}
 
-        <!-- {#if categoryTitle && categorySlug && href}
-          <span>•</span>
+          {#if categoryTitle && categorySlug && href}
+            <span>•</span>
+          {/if}
         {/if}
--->
         {#if href}
           <a {href} rel="noopener noreferrer" target="_blank">Link ↗</a>
         {/if}

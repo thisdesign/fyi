@@ -16,11 +16,14 @@
   import RouteFade from '../../components/RouteFade.svelte'
 
   let items = site.inspiration || []
+
+  let isCategoryLinkShown = site.showInspirationCategories
 </script>
 
+<title>Inspiration – FYi</title>
 <Nav pageRoute="inspiration" />
 <RouteFade>
-  <Inspiration {items} />
+  <Inspiration {items} {isCategoryLinkShown} />
 </RouteFade>
 
 <style type="text/scss">
