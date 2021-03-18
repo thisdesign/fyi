@@ -39,7 +39,7 @@
     <div class="contentWrap">
       <div
         bind:this={parallaxItem}
-        style="transform: scale(1.1) translateY(-25px);"
+        style="transform: scale(1.3) translateY(-25px);"
       >
         {#if video}
           <Video src={video} poster={img.src} />

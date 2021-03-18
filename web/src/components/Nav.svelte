@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import Logo from './Logo.svelte'
-  import Cords from './Cords.svelte'
 
-  export let lat = 0
-  export let lng = 0
   export let sticky: boolean = false
-  export let isCords: boolean = true
   export let pageRoute: 'inspiration' | 'home'
+  export let email: string
 
   let isContactOpen = true
   let hoveredRoute: string | null = null
@@ -57,7 +53,7 @@
         {#if isContactOpen}
           Contact
         {:else}
-          <a href="mailto:info@fyidesign.ca">info@fyidesign.ca</a>
+          <a href={`mailto:${email}`}>{email}</a>
         {/if}
       </li>
     </ul>

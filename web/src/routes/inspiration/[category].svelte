@@ -31,9 +31,12 @@
   $: categoryName = filteredItems[0].category?.title || null
 </script>
 
-<Nav pageRoute="inspiration" />
 <RouteFade>
   {#if site.inspiration}
-    <Inspiration items={itemsToDisplay} category={categoryName} />
+    <Inspiration
+      items={itemsToDisplay}
+      category={categoryName}
+      isCategoryLinkShown={false}
+    />
   {/if}
 </RouteFade>

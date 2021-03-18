@@ -59,7 +59,7 @@
   })
 </script>
 
-<Nav {lat} {lng} pageRoute="home" />
+<Nav pageRoute="home" email="test" />
 <Seo
   pageTitle={null}
   {baseTitle}
