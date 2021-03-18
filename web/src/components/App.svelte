@@ -29,6 +29,7 @@
 
   $: placeholderImg = data.home?.homeImage || null
   $: isTwoCol = data.home?.twoCol || false
+  $: email = data.general?.contactEmail || ''
 
   let isBelowHome = false
 
@@ -59,7 +60,7 @@
   })
 </script>
 
-<Nav pageRoute="home" email="test" />
+<Nav pageRoute="home" {email} />
 <Seo
   pageTitle={null}
   {baseTitle}
